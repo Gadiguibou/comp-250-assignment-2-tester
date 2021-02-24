@@ -5,6 +5,7 @@
 ## Disclaimers
 
 - Please only add TEST CODE here, not actual assignment code. If you accidentally pushed your assignment code, please delete ASAP to avoid any inconveniences.
+- You will need to add a toString() method in the Deck class that prints all the cards separated by spaces in order for some of the tests to pass.
 - Otherwise, happy coding and debugging!
 
 ## How To Use
