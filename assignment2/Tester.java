@@ -506,6 +506,7 @@ class SolitaireCipher_encode implements Runnable {
   }
 }
 
+
 class SolitaireCipher_decode implements Runnable {
   @Override
   public void run() {
@@ -521,6 +522,24 @@ class SolitaireCipher_decode implements Runnable {
           "The resulting decoded message is " + result + " but should have been " + expected);
     }
     System.out.println("SolitaireCipher message decoding test passed.");
+  }
+}
+
+class SolitaireCipher_decode_secret_message implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(13, 2);
+    Deck.gen.setSeed(22022021);
+    deck.shuffle();
+    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
+    String result = solitaireCipher.decode("HFCFGIYJOJLYL");
+    String expected = "HAVEFUNWITHIT";
+
+    if (!result.equals(expected)) {
+      throw new AssertionError(
+          "The resulting decoded message is " + result + " but should have been " + expected);
+    }
+    System.out.println("SolitaireCipher message decoding yielded: " + result + " on announcement secret message.");
   }
 }
 
@@ -550,6 +569,7 @@ public class Tester {
       "assignment2.SolitaireCipher_get_keystream",
       "assignment2.SolitaireCipher_encode",
       "assignment2.SolitaireCipher_decode",
+      "assignment2.SolitaireCipher_decode_secret_message",
     };
 
   public static void main(String[] args) {
