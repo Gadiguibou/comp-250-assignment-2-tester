@@ -234,6 +234,31 @@ class Deck_locate_joker_top_or_bottom_cards implements Runnable {
   }
 }
 
+class Deck_locate_joker_no_jokers implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck();
+    deck.addCard(deck.new PlayingCard("Spades", 1));
+
+    Deck.Joker resultingRedJoker = deck.locateJoker("red");
+    Deck.Joker resultingBlackJoker = deck.locateJoker("black");
+    Deck.Joker expectedRedJoker = null;
+    Deck.Joker expectedBlackJoker = null;
+
+    if (resultingRedJoker != expectedRedJoker) {
+      throw new AssertionError("deck.locateJoker(\"red\") returned " + resultingRedJoker + " but expected "
+          + expectedRedJoker);
+    }
+
+    if (resultingBlackJoker != expectedBlackJoker) {
+      throw new AssertionError("deck.locateJoker(\"black\") returned " + resultingBlackJoker + " but expected "
+          + expectedBlackJoker);
+    }
+
+    System.out.println("Deck locate joker no jokers test passed.");
+  }
+}
+
 class Deck_move_card_no_change implements Runnable {
   @Override
   public void run() {
@@ -554,6 +579,7 @@ public class Tester {
       "assignment2.Deck_shuffle",
       "assignment2.Deck_locate_joker",
       "assignment2.Deck_locate_joker_top_or_bottom_cards",
+      "assignment2.Deck_locate_joker_no_jokers",
       "assignment2.Deck_move_card_no_change",
       "assignment2.Deck_move_card_with_change",
       "assignment2.Deck_triple_cut_regular",
