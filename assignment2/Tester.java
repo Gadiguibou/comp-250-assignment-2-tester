@@ -56,6 +56,25 @@ class Deck_Deck_too_many_cards implements Runnable {
 }
 
 
+class Deck_Deck_too_few_cards implements Runnable {
+	@Override
+	public void run() {
+		boolean thrown = false;
+		try {
+			new Deck(0, 4);
+		} catch (IllegalArgumentException expected) {
+			thrown = true;
+		}
+
+		if (!thrown) {
+			throw new AssertionError("new Deck(0, 4) did not throw an IllegalArgumentException");
+		} else {
+			System.out.println("Too few cards deck test passed.");
+		}
+	}
+}
+
+
 class Deck_Deck_too_many_suits implements Runnable {
   @Override
   public void run() {
@@ -72,6 +91,25 @@ class Deck_Deck_too_many_suits implements Runnable {
       System.out.println("Too many suits deck test passed.");
     }
   }
+}
+
+
+class Deck_Deck_too_few_suits implements Runnable {
+	@Override
+	public void run() {
+		boolean thrown = false;
+		try {
+			new Deck(13, 0);
+		} catch (IllegalArgumentException expected) {
+			thrown = true;
+		}
+
+		if (!thrown) {
+			throw new AssertionError("new Deck(13, 0) did not throw an IllegalArgumentException");
+		} else {
+			System.out.println("Too few suits deck test passed.");
+		}
+	}
 }
 
 
@@ -570,33 +608,35 @@ class SolitaireCipher_decode_secret_message implements Runnable {
 
 public class Tester {
   static String[] tests = {
-      "assignment2.Deck_Deck_one_card",
-      "assignment2.Deck_Deck_all_cards",
-      "assignment2.Deck_Deck_too_many_cards",
-      "assignment2.Deck_Deck_too_many_suits",
-      "assignment2.Deck_Deck_copy", 
-      "assignment2.Deck_numOfCards",
-      "assignment2.Deck_shuffle",
-      "assignment2.Deck_locate_joker",
-      "assignment2.Deck_locate_joker_top_or_bottom_cards",
-      "assignment2.Deck_locate_joker_no_jokers",
-      "assignment2.Deck_move_card_no_change",
-      "assignment2.Deck_move_card_with_change",
-      "assignment2.Deck_triple_cut_regular",
-      "assignment2.Deck_triple_cut_empty_end",
-      "assignment2.Deck_triple_cut_empty_start",
-      "assignment2.Deck_triple_cut_both_ends_empty",
-      "assignment2.Deck_count_cut_no_change_1",
-      "assignment2.Deck_count_cut_no_change_2",
-      "assignment2.Deck_count_cut_with_change",
-      "assignment2.Deck_look_up_card_joker",
-      "assignment2.Deck_look_up_card_regular",
-      "assignment2.Deck_generate_next_keystream_value",
-      "assignment2.SolitaireCipher_get_keystream",
-      "assignment2.SolitaireCipher_encode",
-      "assignment2.SolitaireCipher_decode",
-      "assignment2.SolitaireCipher_decode_secret_message",
-    };
+			"assignment2.Deck_Deck_one_card",
+			"assignment2.Deck_Deck_all_cards",
+			"assignment2.Deck_Deck_too_many_cards",
+			"assignment2.Deck_Deck_too_few_cards",
+			"assignment2.Deck_Deck_too_many_suits",
+			"assignment2.Deck_Deck_too_few_suits",
+			"assignment2.Deck_Deck_copy",
+			"assignment2.Deck_numOfCards",
+			"assignment2.Deck_shuffle",
+			"assignment2.Deck_locate_joker",
+			"assignment2.Deck_locate_joker_top_or_bottom_cards",
+			"assignment2.Deck_locate_joker_no_jokers",
+			"assignment2.Deck_move_card_no_change",
+			"assignment2.Deck_move_card_with_change",
+			"assignment2.Deck_triple_cut_regular",
+			"assignment2.Deck_triple_cut_empty_end",
+			"assignment2.Deck_triple_cut_empty_start",
+			"assignment2.Deck_triple_cut_both_ends_empty",
+			"assignment2.Deck_count_cut_no_change_1",
+			"assignment2.Deck_count_cut_no_change_2",
+			"assignment2.Deck_count_cut_with_change",
+			"assignment2.Deck_look_up_card_joker",
+			"assignment2.Deck_look_up_card_regular",
+			"assignment2.Deck_generate_next_keystream_value",
+			"assignment2.SolitaireCipher_get_keystream",
+			"assignment2.SolitaireCipher_encode",
+			"assignment2.SolitaireCipher_decode",
+			"assignment2.SolitaireCipher_decode_secret_message"
+	};
 
   public static void main(String[] args) {
     int numPassed = 0;
