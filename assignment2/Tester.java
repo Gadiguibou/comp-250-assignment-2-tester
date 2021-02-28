@@ -161,6 +161,28 @@ class Deck_Deck_deep_copy implements Runnable {
     received = Tester.deckToString(deckCopy);
     if (!expected.equals(received))
       throw new AssertionError("The copied deck was changed when the original deck was changed");
+
+    System.out.println("Deck deep copy test passed.");
+  }
+}
+
+
+class Deck_addCard implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(1, 1);
+    String expected = "AC RJ BJ 5C";
+    deck.addCard(deck.new PlayingCard("clubs", 5));
+
+    // Check that list structure is ok
+    Tester.checkReferences(deck);
+
+    // Check that cards are in the right order
+    String received = Tester.deckToString(deck);
+    if (!received.equals(expected))
+      throw new AssertionError("Expected deck " + expected + " but received " + received);
+
+    System.out.println("Deck addCard() test passed.");
   }
 }
 
@@ -651,6 +673,7 @@ public class Tester {
       "assignment2.Deck_Deck_too_few_suits",
       "assignment2.Deck_Deck_copy",
       "assignment2.Deck_Deck_deep_copy",
+      "assignment2.Deck_Deck_addCard",
       "assignment2.Deck_numOfCards",
       "assignment2.Deck_shuffle",
       "assignment2.Deck_locate_joker",
