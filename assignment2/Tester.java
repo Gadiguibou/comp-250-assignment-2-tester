@@ -422,6 +422,9 @@ class Deck_triple_cut_regular implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck regular triple cut test passed.");
   }
 }
@@ -442,6 +445,9 @@ class Deck_triple_cut_empty_end implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck empty end triple cut test passed.");
   }
 }
@@ -462,6 +468,9 @@ class Deck_triple_cut_empty_start implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck empty start triple cut test passed.");
   }
 }
@@ -483,6 +492,9 @@ class Deck_triple_cut_both_ends_empty implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck both ends empty triple cut test passed.");
   }
 }
