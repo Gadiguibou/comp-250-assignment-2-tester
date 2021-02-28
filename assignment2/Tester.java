@@ -215,6 +215,9 @@ class Deck_shuffle implements Runnable {
       throw new AssertionError(
           "The shuffled deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck shuffle test passed.");
   }
 }
