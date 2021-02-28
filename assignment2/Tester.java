@@ -515,6 +515,9 @@ class Deck_count_cut_no_change_1 implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck count cut no change test 1 passed.");
   }
 }
@@ -534,6 +537,9 @@ class Deck_count_cut_no_change_2 implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck count cut no change test 2 passed.");
   }
 }
@@ -553,6 +559,9 @@ class Deck_count_cut_with_change implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck count cut with change test passed.");
   }
 }
