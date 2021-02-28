@@ -617,7 +617,7 @@ public class Tester {
   static String[] tests = {
       "assignment2.Deck_Deck_one_card",
       "assignment2.Deck_Deck_all_cards",
-      "assignment2.Deck_Deck_all_cards",
+      "assignment2.Deck_Deck_references",
       "assignment2.Deck_Deck_too_many_cards",
       "assignment2.Deck_Deck_too_few_cards",
       "assignment2.Deck_Deck_too_many_suits",
