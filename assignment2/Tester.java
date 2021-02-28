@@ -26,13 +26,21 @@ class Deck_Deck_all_cards implements Runnable {
   public void run() {
     Deck deck = new Deck(13, 4);
     String result = deck.toString();
-    String expected =
-        "AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC AD 2D 3D 4D 5D 6D 7D 8D 9D 10D JD QD KD AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH AS 2S 3S 4S 5S 6S 7S 8S 9S 10S JS QS KS RJ BJ";
+    String expected = "AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC AD 2D 3D 4D 5D 6D 7D 8D 9D 10D JD QD KD AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH AS 2S 3S 4S 5S 6S 7S 8S 9S 10S JS QS KS RJ BJ";
 
     if (!result.equals(expected)) {
       throw new AssertionError("new Deck(13, 4) returned " + result + " but expected " + expected);
     }
     System.out.println("All cards deck test passed.");
+  }
+}
+
+class Deck_Deck_references implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(13, 4);
+    Tester.checkReferences(deck);
+    System.out.println("Deck() references test passed");
   }
 }
 
@@ -57,21 +65,21 @@ class Deck_Deck_too_many_cards implements Runnable {
 
 
 class Deck_Deck_too_few_cards implements Runnable {
-	@Override
-	public void run() {
-		boolean thrown = false;
-		try {
-			new Deck(0, 4);
-		} catch (IllegalArgumentException expected) {
-			thrown = true;
-		}
+  @Override
+  public void run() {
+    boolean thrown = false;
+    try {
+      new Deck(0, 4);
+    } catch (IllegalArgumentException expected) {
+      thrown = true;
+    }
 
-		if (!thrown) {
-			throw new AssertionError("new Deck(0, 4) did not throw an IllegalArgumentException");
-		} else {
-			System.out.println("Too few cards deck test passed.");
-		}
-	}
+    if (!thrown) {
+      throw new AssertionError("new Deck(0, 4) did not throw an IllegalArgumentException");
+    } else {
+      System.out.println("Too few cards deck test passed.");
+    }
+  }
 }
 
 
@@ -95,21 +103,21 @@ class Deck_Deck_too_many_suits implements Runnable {
 
 
 class Deck_Deck_too_few_suits implements Runnable {
-	@Override
-	public void run() {
-		boolean thrown = false;
-		try {
-			new Deck(13, 0);
-		} catch (IllegalArgumentException expected) {
-			thrown = true;
-		}
+  @Override
+  public void run() {
+    boolean thrown = false;
+    try {
+      new Deck(13, 0);
+    } catch (IllegalArgumentException expected) {
+      thrown = true;
+    }
 
-		if (!thrown) {
-			throw new AssertionError("new Deck(13, 0) did not throw an IllegalArgumentException");
-		} else {
-			System.out.println("Too few suits deck test passed.");
-		}
-	}
+    if (!thrown) {
+      throw new AssertionError("new Deck(13, 0) did not throw an IllegalArgumentException");
+    } else {
+      System.out.println("Too few suits deck test passed.");
+    }
+  }
 }
 
 
@@ -119,8 +127,7 @@ class Deck_Deck_copy implements Runnable {
     Deck originalDeck = new Deck(13, 4);
     Deck deckCopy = new Deck(originalDeck);
     String result = deckCopy.toString();
-    String expected =
-        "AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC AD 2D 3D 4D 5D 6D 7D 8D 9D 10D JD QD KD AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH AS 2S 3S 4S 5S 6S 7S 8S 9S 10S JS QS KS RJ BJ";
+    String expected = "AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC AD 2D 3D 4D 5D 6D 7D 8D 9D 10D JD QD KD AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH AS 2S 3S 4S 5S 6S 7S 8S 9S 10S JS QS KS RJ BJ";
 
     if (!result.equals(expected)) {
       throw new AssertionError(
@@ -517,7 +524,7 @@ class Deck_generate_next_keystream_value implements Runnable {
     Deck.gen.setSeed(10);
     deck.shuffle();
     int[] results = new int[12];
-    int[] expected = {4, 4, 15, 3, 3, 2, 1, 14, 16, 17, 17, 14};
+    int[] expected = { 4, 4, 15, 3, 3, 2, 1, 14, 16, 17, 17, 14 };
 
     for (int i = 0; i < 12; i++) {
       results[i] = deck.generateNextKeystreamValue();
@@ -540,7 +547,7 @@ class SolitaireCipher_get_keystream implements Runnable {
     deck.shuffle();
     SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
     int[] results = solitaireCipher.getKeystream(12);
-    int[] expected = {4, 4, 15, 3, 3, 2, 1, 14, 16, 17, 17, 14};
+    int[] expected = { 4, 4, 15, 3, 3, 2, 1, 14, 16, 17, 17, 14 };
 
     if (!Arrays.equals(results, expected)) {
       throw new AssertionError("The resulting keystream values are " + Arrays.toString(results)
@@ -608,35 +615,36 @@ class SolitaireCipher_decode_secret_message implements Runnable {
 
 public class Tester {
   static String[] tests = {
-			"assignment2.Deck_Deck_one_card",
-			"assignment2.Deck_Deck_all_cards",
-			"assignment2.Deck_Deck_too_many_cards",
-			"assignment2.Deck_Deck_too_few_cards",
-			"assignment2.Deck_Deck_too_many_suits",
-			"assignment2.Deck_Deck_too_few_suits",
-			"assignment2.Deck_Deck_copy",
-			"assignment2.Deck_numOfCards",
-			"assignment2.Deck_shuffle",
-			"assignment2.Deck_locate_joker",
-			"assignment2.Deck_locate_joker_top_or_bottom_cards",
-			"assignment2.Deck_locate_joker_no_jokers",
-			"assignment2.Deck_move_card_no_change",
-			"assignment2.Deck_move_card_with_change",
-			"assignment2.Deck_triple_cut_regular",
-			"assignment2.Deck_triple_cut_empty_end",
-			"assignment2.Deck_triple_cut_empty_start",
-			"assignment2.Deck_triple_cut_both_ends_empty",
-			"assignment2.Deck_count_cut_no_change_1",
-			"assignment2.Deck_count_cut_no_change_2",
-			"assignment2.Deck_count_cut_with_change",
-			"assignment2.Deck_look_up_card_joker",
-			"assignment2.Deck_look_up_card_regular",
-			"assignment2.Deck_generate_next_keystream_value",
-			"assignment2.SolitaireCipher_get_keystream",
-			"assignment2.SolitaireCipher_encode",
-			"assignment2.SolitaireCipher_decode",
-			"assignment2.SolitaireCipher_decode_secret_message"
-	};
+      "assignment2.Deck_Deck_one_card",
+      "assignment2.Deck_Deck_all_cards",
+      "assignment2.Deck_Deck_all_cards",
+      "assignment2.Deck_Deck_too_many_cards",
+      "assignment2.Deck_Deck_too_few_cards",
+      "assignment2.Deck_Deck_too_many_suits",
+      "assignment2.Deck_Deck_too_few_suits",
+      "assignment2.Deck_Deck_copy",
+      "assignment2.Deck_numOfCards",
+      "assignment2.Deck_shuffle",
+      "assignment2.Deck_locate_joker",
+      "assignment2.Deck_locate_joker_top_or_bottom_cards",
+      "assignment2.Deck_locate_joker_no_jokers",
+      "assignment2.Deck_move_card_no_change",
+      "assignment2.Deck_move_card_with_change",
+      "assignment2.Deck_triple_cut_regular",
+      "assignment2.Deck_triple_cut_empty_end",
+      "assignment2.Deck_triple_cut_empty_start",
+      "assignment2.Deck_triple_cut_both_ends_empty",
+      "assignment2.Deck_count_cut_no_change_1",
+      "assignment2.Deck_count_cut_no_change_2",
+      "assignment2.Deck_count_cut_with_change",
+      "assignment2.Deck_look_up_card_joker",
+      "assignment2.Deck_look_up_card_regular",
+      "assignment2.Deck_generate_next_keystream_value",
+      "assignment2.SolitaireCipher_get_keystream",
+      "assignment2.SolitaireCipher_encode",
+      "assignment2.SolitaireCipher_decode",
+      "assignment2.SolitaireCipher_decode_secret_message"
+  };
 
   public static void main(String[] args) {
     int numPassed = 0;
@@ -645,8 +653,7 @@ public class Tester {
       System.out.printf("%n======= %s =======%n", className);
       System.out.flush();
       try {
-        Runnable testCase =
-            (Runnable) Class.forName(className).getDeclaredConstructor().newInstance();
+        Runnable testCase = (Runnable) Class.forName(className).getDeclaredConstructor().newInstance();
         testCase.run();
         numPassed++;
       } catch (AssertionError e) {
@@ -668,5 +675,34 @@ public class Tester {
     if (numPassed == tests.length) {
       System.out.println("All clear! Now get some rest.");
     }
+  }
+
+  // Utility methods
+
+  /**
+   * Checks that the given deck has consistent references (i.e. card ==
+   * card.next.prev for all cards) and loops around to the head only after
+   * traversing all cards. If not, throws an AssertionError detailing the issue.
+   * 
+   * @param deck The deck to be checked
+   */
+  public static void checkReferences(Deck deck) {
+    Deck.Card currentCard = deck.head;
+
+    for (int i = 0; i < deck.numOfCards; i++) {
+      // Check that references with the next node are consistent
+      if (currentCard != currentCard.next.prev)
+        throw new AssertionError("The links between card " + i + " and card " + (i + 1) + " are inconsistent.");
+
+      // Check that the list hasn't looped back to the head prematurely
+      if (currentCard.next == deck.head && i != deck.numOfCards - 1)
+        throw new AssertionError("The list looped back to the head prematurely.");
+
+      currentCard = currentCard.next;
+    }
+
+    // Check that the list looped back to the head
+    if (currentCard != deck.head)
+      throw new AssertionError("The list did not loop back to the head after traversing all cards.");
   }
 }
