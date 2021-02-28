@@ -133,6 +133,9 @@ class Deck_Deck_copy implements Runnable {
       throw new AssertionError(
           "new Deck(new Deck(13, 4)) returned " + result + " but expected " + expected);
     }
+
+    Tester.checkReferences(deckCopy);
+
     System.out.println("Deck copy test passed.");
   }
 }
