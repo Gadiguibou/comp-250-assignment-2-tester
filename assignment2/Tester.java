@@ -16,6 +16,9 @@ class Deck_Deck_one_card implements Runnable {
     if (!result.equals(expected)) {
       throw new AssertionError("new Deck(1, 1) returned " + result + " but expected " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("One card deck test passed.");
   }
 }
@@ -31,16 +34,10 @@ class Deck_Deck_all_cards implements Runnable {
     if (!result.equals(expected)) {
       throw new AssertionError("new Deck(13, 4) returned " + result + " but expected " + expected);
     }
-    System.out.println("All cards deck test passed.");
-  }
-}
 
-class Deck_Deck_references implements Runnable {
-  @Override
-  public void run() {
-    Deck deck = new Deck(13, 4);
     Tester.checkReferences(deck);
-    System.out.println("Deck() references test passed");
+
+    System.out.println("All cards deck test passed.");
   }
 }
 
@@ -699,7 +696,6 @@ public class Tester {
   static String[] tests = {
       "assignment2.Deck_Deck_one_card",
       "assignment2.Deck_Deck_all_cards",
-      "assignment2.Deck_Deck_references",
       "assignment2.Deck_Deck_too_many_cards",
       "assignment2.Deck_Deck_too_few_cards",
       "assignment2.Deck_Deck_too_many_suits",
