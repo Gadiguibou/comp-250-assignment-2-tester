@@ -650,6 +650,7 @@ public class Tester {
       "assignment2.Deck_Deck_too_many_suits",
       "assignment2.Deck_Deck_too_few_suits",
       "assignment2.Deck_Deck_copy",
+      "assignment2.Deck_Deck_deep_copy",
       "assignment2.Deck_numOfCards",
       "assignment2.Deck_shuffle",
       "assignment2.Deck_locate_joker",
