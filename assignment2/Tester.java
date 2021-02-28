@@ -368,6 +368,9 @@ class Deck_move_card_no_change implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
+
+    Tester.checkReferences(deck);
+
     System.out.println("Deck card move no change test passed.");
   }
 }
@@ -387,23 +390,10 @@ class Deck_move_card_with_change implements Runnable {
       throw new AssertionError(
           "The resulting deck is " + result + " but should have been " + expected);
     }
-    System.out.println("Deck card move with change test passed.");
-  }
-}
-
-
-class Deck_move_card_references implements Runnable {
-  @Override
-  public void run() {
-    Deck deck = new Deck(5, 2);
-    Deck.gen.setSeed(10);
-    deck.shuffle();
-    deck.moveCard(deck.locateJoker("red"), 1);
-    deck.moveCard(deck.locateJoker("black"), 2);
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck moveCard() references test passed.");
+    System.out.println("Deck card move with change test passed.");
   }
 }
 
@@ -710,7 +700,7 @@ public class Tester {
       "assignment2.Deck_Deck_too_few_suits",
       "assignment2.Deck_Deck_copy",
       "assignment2.Deck_Deck_deep_copy",
-      "assignment2.Deck_Deck_addCard",
+      "assignment2.Deck_addCard",
       "assignment2.Deck_numOfCards",
       "assignment2.Deck_shuffle",
       "assignment2.Deck_locate_joker",
@@ -718,7 +708,6 @@ public class Tester {
       "assignment2.Deck_locate_joker_no_jokers",
       "assignment2.Deck_move_card_no_change",
       "assignment2.Deck_move_card_with_change",
-      "assignment2.Deck_move_card_references",
       "assignment2.Deck_triple_cut_regular",
       "assignment2.Deck_triple_cut_empty_end",
       "assignment2.Deck_triple_cut_empty_start",
