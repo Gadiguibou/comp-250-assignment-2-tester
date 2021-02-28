@@ -392,6 +392,22 @@ class Deck_move_card_with_change implements Runnable {
 }
 
 
+class Deck_move_card_references implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(5, 2);
+    Deck.gen.setSeed(10);
+    deck.shuffle();
+    deck.moveCard(deck.locateJoker("red"), 1);
+    deck.moveCard(deck.locateJoker("black"), 2);
+
+    Tester.checkReferences(deck);
+
+    System.out.println("Deck moveCard() references test passed.");
+  }
+}
+
+
 class Deck_triple_cut_regular implements Runnable {
   @Override
   public void run() {
@@ -681,6 +697,7 @@ public class Tester {
       "assignment2.Deck_locate_joker_no_jokers",
       "assignment2.Deck_move_card_no_change",
       "assignment2.Deck_move_card_with_change",
+      "assignment2.Deck_move_card_references",
       "assignment2.Deck_triple_cut_regular",
       "assignment2.Deck_triple_cut_empty_end",
       "assignment2.Deck_triple_cut_empty_start",
