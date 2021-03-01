@@ -5,9 +5,6 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-// For most of these of to work you will need to implement a toString() method on the Deck class
-// that prints all the cards in the deck separated by spaces.
-
 class Deck_Deck_one_card implements Runnable {
   @Override
   public void run() {
@@ -670,26 +667,6 @@ class SolitaireCipher_decode implements Runnable {
 }
 
 
-class SolitaireCipher_decode_secret_message implements Runnable {
-  @Override
-  public void run() {
-    Deck deck = new Deck(13, 2);
-    Deck.gen.setSeed(22022021);
-    deck.shuffle();
-    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
-    String result = solitaireCipher.decode("HFCFGIYJOJLYL");
-    String expected = "HAVEFUNWITHIT";
-
-    if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting decoded message is " + result + " but should have been " + expected);
-    }
-    System.out.println(
-        "SolitaireCipher message decoding yielded: " + result + " on announcement secret message.");
-  }
-}
-
-
 /*
  * Checks that every non-private method in SolitaireCipher is one of the
  * required methods
@@ -758,6 +735,26 @@ class Deck_extra_methods implements Runnable {
     requiredMethods[6] = new TMethod(Modifier.PUBLIC, Void.TYPE, "countCut", new Class[0], new Class[0]);
     requiredMethods[7] = new TMethod(Modifier.PUBLIC, Deck.Card.class, "lookUpCard", new Class[0], new Class[0]);
     return requiredMethods;
+  }
+}
+
+
+class SolitaireCipher_decode_secret_message implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(13, 2);
+    Deck.gen.setSeed(22022021);
+    deck.shuffle();
+    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
+    String result = solitaireCipher.decode("HFCFGIYJOJLYL");
+    String expected = "HAVEFUNWITHIT";
+
+    if (!result.equals(expected)) {
+      throw new AssertionError(
+          "The resulting decoded message is " + result + " but should have been " + expected);
+    }
+    System.out.println(
+        "SolitaireCipher message decoding yielded: " + result + " on announcement secret message.");
   }
 }
 
@@ -852,9 +849,9 @@ public class Tester {
       "assignment2.SolitaireCipher_get_keystream",
       "assignment2.SolitaireCipher_encode",
       "assignment2.SolitaireCipher_decode",
-      "assignment2.SolitaireCipher_decode_secret_message",
       "assignment2.SolitaireCipher_extra_methods",
-      "assignment2.Deck_extra_methods"
+      "assignment2.Deck_extra_methods",
+      "assignment2.SolitaireCipher_decode_secret_message"
   };
 
   public static void main(String[] args) {
