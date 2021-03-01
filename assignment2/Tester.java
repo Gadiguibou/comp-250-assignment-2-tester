@@ -1,5 +1,7 @@
 package assignment2;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -23,7 +25,6 @@ class Deck_Deck_one_card implements Runnable {
   }
 }
 
-
 class Deck_Deck_all_cards implements Runnable {
   @Override
   public void run() {
@@ -40,7 +41,6 @@ class Deck_Deck_all_cards implements Runnable {
     System.out.println("All cards deck test passed.");
   }
 }
-
 
 class Deck_Deck_too_many_cards implements Runnable {
   @Override
@@ -60,7 +60,6 @@ class Deck_Deck_too_many_cards implements Runnable {
   }
 }
 
-
 class Deck_Deck_too_few_cards implements Runnable {
   @Override
   public void run() {
@@ -78,7 +77,6 @@ class Deck_Deck_too_few_cards implements Runnable {
     }
   }
 }
-
 
 class Deck_Deck_too_many_suits implements Runnable {
   @Override
@@ -98,7 +96,6 @@ class Deck_Deck_too_many_suits implements Runnable {
   }
 }
 
-
 class Deck_Deck_too_few_suits implements Runnable {
   @Override
   public void run() {
@@ -116,7 +113,6 @@ class Deck_Deck_too_few_suits implements Runnable {
     }
   }
 }
-
 
 class Deck_Deck_copy implements Runnable {
   @Override
@@ -136,7 +132,6 @@ class Deck_Deck_copy implements Runnable {
     System.out.println("Deck copy test passed.");
   }
 }
-
 
 /*
  * Checks that Deck(Deck d) produces a deep copy of d (i.e. changing d does not
@@ -166,7 +161,6 @@ class Deck_Deck_deep_copy implements Runnable {
   }
 }
 
-
 class Deck_addCard implements Runnable {
   @Override
   public void run() {
@@ -186,7 +180,6 @@ class Deck_addCard implements Runnable {
   }
 }
 
-
 class Deck_numOfCards implements Runnable {
   @Override
   public void run() {
@@ -201,7 +194,6 @@ class Deck_numOfCards implements Runnable {
   }
 }
 
-
 class Deck_shuffle implements Runnable {
   @Override
   public void run() {
@@ -212,8 +204,7 @@ class Deck_shuffle implements Runnable {
     String expected = "3C 3D AD 5C BJ 2C 2D 4D AC RJ 4C 5D";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The shuffled deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The shuffled deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -221,7 +212,6 @@ class Deck_shuffle implements Runnable {
     System.out.println("Deck shuffle test passed.");
   }
 }
-
 
 class Deck_locate_joker implements Runnable {
   @Override
@@ -247,15 +237,14 @@ class Deck_locate_joker implements Runnable {
     String expectedBlackJokerNext = "2C";
     String expectedBlackJokerPrev = "5C";
 
-
     if (!redJoker.toString().equals(expectedRedJokerString)) {
       throw new AssertionError("deck.locateJoker(\"red\") returned " + redJoker + " but expected "
           + expectedRedJokerString);
     }
 
     if (!blackJoker.toString().equals(expectedBlackJokerString)) {
-      throw new AssertionError("deck.locateJoker(\"black\") returned " + blackJoker
-          + " but expected " + expectedBlackJokerString);
+      throw new AssertionError("deck.locateJoker(\"black\") returned " + blackJoker + " but expected "
+          + expectedBlackJokerString);
     }
 
     if (!resultRedJokerNext.equals(expectedRedJokerNext)
@@ -302,15 +291,14 @@ class Deck_locate_joker_top_or_bottom_cards implements Runnable {
     String expectedBlackJokerNext = "2C";
     String expectedBlackJokerPrev = "RJ";
 
-
     if (!redJoker.toString().equals(expectedRedJokerString)) {
       throw new AssertionError("deck.locateJoker(\"red\") returned " + redJoker + " but expected "
           + expectedRedJokerString);
     }
 
     if (!blackJoker.toString().equals(expectedBlackJokerString)) {
-      throw new AssertionError("deck.locateJoker(\"black\") returned " + blackJoker
-          + " but expected " + expectedBlackJokerString);
+      throw new AssertionError("deck.locateJoker(\"black\") returned " + blackJoker + " but expected "
+          + expectedBlackJokerString);
     }
 
     if (!resultRedJokerNext.equals(expectedRedJokerNext)
@@ -343,13 +331,13 @@ class Deck_locate_joker_no_jokers implements Runnable {
     Deck.Joker expectedBlackJoker = null;
 
     if (resultingRedJoker != expectedRedJoker) {
-      throw new AssertionError("deck.locateJoker(\"red\") returned " + resultingRedJoker + " but expected "
-          + expectedRedJoker);
+      throw new AssertionError("deck.locateJoker(\"red\") returned " + resultingRedJoker
+          + " but expected " + expectedRedJoker);
     }
 
     if (resultingBlackJoker != expectedBlackJoker) {
-      throw new AssertionError("deck.locateJoker(\"black\") returned " + resultingBlackJoker + " but expected "
-          + expectedBlackJoker);
+      throw new AssertionError("deck.locateJoker(\"black\") returned " + resultingBlackJoker
+          + " but expected " + expectedBlackJoker);
     }
 
     System.out.println("Deck locate joker no jokers test passed.");
@@ -368,8 +356,7 @@ class Deck_move_card_no_change implements Runnable {
     String expected = "3C 3D AD 5C BJ 2C 2D 4D AC RJ 4C 5D";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -390,8 +377,7 @@ class Deck_move_card_with_change implements Runnable {
     String expected = "3C 3D AD 5C 2C 2D BJ 4D AC 4C RJ 5D";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -399,7 +385,6 @@ class Deck_move_card_with_change implements Runnable {
     System.out.println("Deck card move with change test passed.");
   }
 }
-
 
 class Deck_triple_cut_regular implements Runnable {
   @Override
@@ -412,8 +397,7 @@ class Deck_triple_cut_regular implements Runnable {
     String expected = "4C 5D BJ 2C 2D 4D AC RJ 3C 3D AD 5C";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -421,7 +405,6 @@ class Deck_triple_cut_regular implements Runnable {
     System.out.println("Deck regular triple cut test passed.");
   }
 }
-
 
 class Deck_triple_cut_empty_end implements Runnable {
   @Override
@@ -435,8 +418,7 @@ class Deck_triple_cut_empty_end implements Runnable {
     String expected = "BJ 2C 2D 4D AC 4C 5D RJ 3C 3D AD 5C";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -444,7 +426,6 @@ class Deck_triple_cut_empty_end implements Runnable {
     System.out.println("Deck empty end triple cut test passed.");
   }
 }
-
 
 class Deck_triple_cut_empty_start implements Runnable {
   @Override
@@ -458,8 +439,7 @@ class Deck_triple_cut_empty_start implements Runnable {
     String expected = "4C 5D 3C 3D AD 5C BJ 2C 2D 4D AC RJ";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -467,7 +447,6 @@ class Deck_triple_cut_empty_start implements Runnable {
     System.out.println("Deck empty start triple cut test passed.");
   }
 }
-
 
 class Deck_triple_cut_both_ends_empty implements Runnable {
   @Override
@@ -482,8 +461,7 @@ class Deck_triple_cut_both_ends_empty implements Runnable {
     String expected = "BJ 2C 2D 4D AC 4C 5D 3C 3D AD 5C RJ";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -491,7 +469,6 @@ class Deck_triple_cut_both_ends_empty implements Runnable {
     System.out.println("Deck both ends empty triple cut test passed.");
   }
 }
-
 
 class Deck_count_cut_no_change_1 implements Runnable {
   @Override
@@ -505,8 +482,7 @@ class Deck_count_cut_no_change_1 implements Runnable {
     String expected = "3C 3D AD 5C BJ 2C 2D 4D AC RJ 4C 5D KC";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -527,8 +503,7 @@ class Deck_count_cut_no_change_2 implements Runnable {
     String expected = "3C 3D AD 5C BJ 2C 2D 4D AC RJ 4C 5D QC";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -536,7 +511,6 @@ class Deck_count_cut_no_change_2 implements Runnable {
     System.out.println("Deck count cut no change test 2 passed.");
   }
 }
-
 
 class Deck_count_cut_with_change implements Runnable {
   @Override
@@ -549,8 +523,7 @@ class Deck_count_cut_with_change implements Runnable {
     String expected = "2D 4D AC RJ 4C 3C 3D AD 5C BJ 2C 5D";
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "The resulting deck is " + result + " but should have been " + expected);
+      throw new AssertionError("The resulting deck is " + result + " but should have been " + expected);
     }
 
     Tester.checkReferences(deck);
@@ -558,7 +531,6 @@ class Deck_count_cut_with_change implements Runnable {
     System.out.println("Deck count cut with change test passed.");
   }
 }
-
 
 class Deck_look_up_card_joker implements Runnable {
   @Override
@@ -578,7 +550,6 @@ class Deck_look_up_card_joker implements Runnable {
   }
 }
 
-
 class Deck_look_up_card_regular implements Runnable {
   @Override
   public void run() {
@@ -594,7 +565,6 @@ class Deck_look_up_card_regular implements Runnable {
     System.out.println("Deck look up card joker test passed.");
   }
 }
-
 
 class Deck_generate_next_keystream_value implements Runnable {
   @Override
@@ -617,7 +587,6 @@ class Deck_generate_next_keystream_value implements Runnable {
   }
 }
 
-
 class SolitaireCipher_get_keystream implements Runnable {
   @Override
   public void run() {
@@ -636,7 +605,6 @@ class SolitaireCipher_get_keystream implements Runnable {
   }
 }
 
-
 class SolitaireCipher_encode implements Runnable {
   @Override
   public void run() {
@@ -654,7 +622,6 @@ class SolitaireCipher_encode implements Runnable {
     System.out.println("SolitaireCipher message encoding test passed.");
   }
 }
-
 
 class SolitaireCipher_decode implements Runnable {
   @Override
@@ -688,7 +655,136 @@ class SolitaireCipher_decode_secret_message implements Runnable {
       throw new AssertionError(
           "The resulting decoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher message decoding yielded: " + result + " on announcement secret message.");
+    System.out.println(
+        "SolitaireCipher message decoding yielded: " + result + " on announcement secret message.");
+  }
+}
+
+/*
+ * Checks that every non-private method in SolitaireCipher is one of the
+ * required methods
+ */
+class SolitaireCipher_extra_methods implements Runnable {
+  @Override
+  public void run() {
+    Class<SolitaireCipher> cipherClass = SolitaireCipher.class;
+    TMethod[] requiredMethods = getRequiredMethods();
+
+    for (Method m : cipherClass.getDeclaredMethods()) {
+      if (!Modifier.isPrivate(m.getModifiers())) {
+        if (!TMethod.elementOf(m, requiredMethods))
+          throw new AssertionError("Extra non-private method found: " + m);
+      }
+    }
+
+    System.out.println("SolitaireCipher extra methods test passed.");
+  }
+
+  private TMethod[] getRequiredMethods() {
+    TMethod[] requiredMethods = new TMethod[3];
+    requiredMethods[0] = new TMethod(Modifier.PUBLIC, String.class, "decode",
+        new Class[] { String.class }, new Class[0]);
+    requiredMethods[1] = new TMethod(Modifier.PUBLIC, String.class, "encode",
+        new Class[] { String.class }, new Class[0]);
+    requiredMethods[2] = new TMethod(Modifier.PUBLIC, int[].class, "getKeystream",
+        new Class[] { int.class }, new Class[0]);
+    return requiredMethods;
+  }
+}
+
+/*
+ * Checks that every non-private method in Deck is one of the required methods
+ */
+class Deck_extra_methods implements Runnable {
+  @Override
+  public void run() {
+    Class<Deck> deckClass = Deck.class;
+    TMethod[] requiredMethods = getRequiredMethods();
+
+    for (Method m : deckClass.getDeclaredMethods()) {
+      if (!Modifier.isPrivate(m.getModifiers())) {
+        if (!TMethod.elementOf(m, requiredMethods))
+          throw new AssertionError("Extra non-private method found: " + m);
+      }
+    }
+
+    System.out.println("Deck extra methods test passed.");
+  }
+
+  private TMethod[] getRequiredMethods() {
+    TMethod[] requiredMethods = new TMethod[8];
+    requiredMethods[0] = new TMethod(Modifier.PUBLIC, Void.TYPE, "shuffle", new Class[0], new Class[0]);
+    requiredMethods[1] = new TMethod(Modifier.PUBLIC, Integer.TYPE, "generateNextKeystreamValue",
+        new Class[0], new Class[0]);
+    requiredMethods[2] = new TMethod(Modifier.PUBLIC, Void.TYPE, "addCard",
+        new Class[] { Deck.Card.class }, new Class[0]);
+    requiredMethods[3] = new TMethod(Modifier.PUBLIC, Void.TYPE, "moveCard",
+        new Class[] { Deck.Card.class, Integer.TYPE }, new Class[0]);
+    requiredMethods[4] = new TMethod(Modifier.PUBLIC, Void.TYPE, "tripleCut",
+        new Class[] { Deck.Card.class, Deck.Card.class }, new Class[0]);
+    requiredMethods[5] = new TMethod(Modifier.PUBLIC, Deck.Joker.class, "locateJoker",
+        new Class[] { String.class }, new Class[0]);
+    requiredMethods[6] = new TMethod(Modifier.PUBLIC, Void.TYPE, "countCut", new Class[0], new Class[0]);
+    requiredMethods[7] = new TMethod(Modifier.PUBLIC, Deck.Card.class, "lookUpCard", new Class[0], new Class[0]);
+    return requiredMethods;
+  }
+}
+
+/*
+ * Stores data about methods. Is meant to be compared to instances of
+ * java.lang.reflect.Method (which has no public constructor).
+ */
+@SuppressWarnings("rawtypes")
+class TMethod {
+  private int modifiers;
+  private Class returnType;
+  private String name;
+  private Class[] params;
+  private Class[] exceptions;
+
+  /*
+   * Creates a new TMethod by copying all the given arguments to the corresponding
+   * fields
+   */
+  public TMethod(int modifiers, Class returnType, String name, Class[] params, Class[] exceptions) {
+    this.modifiers = modifiers;
+    this.returnType = returnType;
+    this.name = name;
+    this.params = params;
+    this.exceptions = exceptions;
+  }
+
+  /*
+   * A TMethod is equal to a TMethod or a Method if and only if all its fields
+   * match
+   * 
+   * This operation is not commutative
+   */
+  public boolean equals(Object o) {
+    if (o instanceof Method) {
+      Method m = (Method) o;
+      return this.modifiers == m.getModifiers() && this.returnType.equals(m.getReturnType())
+          && this.name.equals(m.getName()) && Arrays.equals(this.params, m.getParameterTypes())
+          && Arrays.equals(this.exceptions, m.getExceptionTypes());
+    } else if (o instanceof TMethod) {
+      TMethod t = (TMethod) o;
+      return this.modifiers == t.modifiers && this.returnType.equals(t.returnType)
+          && this.name.equals(t.name) && Arrays.equals(this.params, t.params)
+          && Arrays.equals(this.exceptions, t.exceptions);
+    } else
+      return false;
+  }
+
+  /*
+   * Checks if method is equal to any of the elements in tMethods
+   */
+  @SuppressWarnings("unlikely-arg-type")
+  public static boolean elementOf(Method method, TMethod[] tMethods) {
+    for (TMethod t : tMethods) {
+      if (t.equals(method))
+        return true;
+    }
+    return false;
   }
 }
 
@@ -723,7 +819,9 @@ public class Tester {
       "assignment2.SolitaireCipher_get_keystream",
       "assignment2.SolitaireCipher_encode",
       "assignment2.SolitaireCipher_decode",
-      "assignment2.SolitaireCipher_decode_secret_message"
+      "assignment2.SolitaireCipher_decode_secret_message",
+      "assignment2.SolitaireCipher_extra_methods",
+      "assignment2.Deck_extra_methods"
   };
 
   public static void main(String[] args) {
@@ -772,7 +870,8 @@ public class Tester {
     for (int i = 0; i < deck.numOfCards; i++) {
       // Check that references with the next node are consistent
       if (currentCard != currentCard.next.prev)
-        throw new AssertionError("The links between card " + i + " and card " + (i + 1) + " are inconsistent.");
+        throw new AssertionError(
+            "The links between card " + i + " and card " + (i + 1) + " are inconsistent.");
 
       // Check that the list hasn't looped back to the head prematurely
       if (currentCard.next == deck.head && i != deck.numOfCards - 1)
