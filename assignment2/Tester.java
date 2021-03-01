@@ -845,14 +845,62 @@ class Deck_extra_constructors implements Runnable {
 }
 
 
+@SuppressWarnings("rawtypes")
+class SolitaireCipher_extra_classes implements Runnable {
+  @Override
+  public void run() {
+    Class<SolitaireCipher> cipherClass = SolitaireCipher.class;
+    Class[] requiredClasses = getRequiredClasses();
+
+    for (Class c : cipherClass.getDeclaredClasses()) {
+      if (!Arrays.asList(requiredClasses).contains(c))
+        throw new AssertionError("Extra nested class found: " + c);
+    }
+
+    System.out.println("SolitaireCipher extra classes test passed.");
+  }
+
+  public Class[] getRequiredClasses() {
+    return new Class[0];
+  }
+}
+
+
+@SuppressWarnings("rawtypes")
+class Deck_extra_classes implements Runnable {
+  @Override
+  public void run() {
+    Class<Deck> deckClass = Deck.class;
+    Class[] requiredClasses = getRequiredClasses();
+
+    for (Class c : deckClass.getDeclaredClasses()) {
+      if (!Arrays.asList(requiredClasses).contains(c))
+        throw new AssertionError("Extra nested class found: " + c);
+    }
+
+    System.out.println("Deck extra classes test passed.");
+  }
+
+  public Class[] getRequiredClasses() {
+    Class[] requiredClasses = new Class[3];
+    requiredClasses[0] = Deck.Card.class;
+    requiredClasses[1] = Deck.PlayingCard.class;
+    requiredClasses[2] = Deck.Joker.class;
+    return requiredClasses;
+  }
+}
+
+
 class General_helper_code implements Runnable {
   private static String[] tests = {
       "assignment2.Deck_extra_methods",
       "assignment2.Deck_extra_fields",
       "assignment2.Deck_extra_constructors",
+      "assignment2.Deck_extra_classes",
       "assignment2.SolitaireCipher_extra_methods",
       "assignment2.SolitaireCipher_extra_fields",
-      "assignment2.SolitaireCipher_extra_constructors"
+      "assignment2.SolitaireCipher_extra_constructors",
+      "assignment2.SolitaireCipher_extra_classes"
   };
 
   @Override
