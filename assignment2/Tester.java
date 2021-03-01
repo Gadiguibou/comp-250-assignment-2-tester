@@ -1,5 +1,6 @@
 package assignment2;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -739,6 +740,53 @@ class Deck_extra_methods implements Runnable {
 }
 
 
+class SolitaireCipher_extra_fields implements Runnable {
+  @Override
+  public void run() {
+    Class<SolitaireCipher> cipherClass = SolitaireCipher.class;
+    TField[] requiredFields = getRequiredFields();
+
+    for (Field f : cipherClass.getDeclaredFields()) {
+      if (!TField.elementOf(f, requiredFields))
+        throw new AssertionError("Extra field found: " + f);
+    }
+
+    System.out.println("SolitaireCipher extra fields test passed.");
+  }
+
+  private TField[] getRequiredFields() {
+    TField[] requiredFields = new TField[1];
+    requiredFields[0] = new TField(Modifier.PUBLIC, Deck.class, "key");
+    return requiredFields;
+  }
+}
+
+
+class Deck_extra_fields implements Runnable {
+  @Override
+  public void run() {
+    Class<Deck> deckClass = Deck.class;
+    TField[] requiredFields = getRequiredFields();
+
+    for (Field f : deckClass.getDeclaredFields()) {
+      if (!TField.elementOf(f, requiredFields))
+        throw new AssertionError("Extra field found: " + f);
+    }
+
+    System.out.println("Deck extra fields test passed.");
+  }
+
+  private TField[] getRequiredFields() {
+    TField[] requiredFields = new TField[4];
+    requiredFields[0] = new TField(Modifier.PUBLIC + Modifier.STATIC, String[].class, "suitsInOrder");
+    requiredFields[1] = new TField(Modifier.PUBLIC + Modifier.STATIC, java.util.Random.class, "gen");
+    requiredFields[2] = new TField(Modifier.PUBLIC, int.class, "numOfCards");
+    requiredFields[3] = new TField(Modifier.PUBLIC, Deck.Card.class, "head");
+    return requiredFields;
+  }
+}
+
+
 class SolitaireCipher_decode_secret_message implements Runnable {
   @Override
   public void run() {
@@ -760,7 +808,7 @@ class SolitaireCipher_decode_secret_message implements Runnable {
 
 
 /*
- * Stores data about methods. Is meant to be compared to instances of
+ * Stores information about methods. Is meant to be compared to instances of
  * java.lang.reflect.Method (which has no public constructor).
  */
 @SuppressWarnings("rawtypes")
@@ -772,8 +820,8 @@ class TMethod {
   private Class[] exceptions;
 
   /*
-   * Creates a new TMethod by copying all the given arguments to the corresponding
-   * fields
+   * Creates a new TMethod by saving all the given arguments directly to the
+   * corresponding fields
    */
   public TMethod(int modifiers, Class returnType, String name, Class[] params, Class[] exceptions) {
     this.modifiers = modifiers;
@@ -787,7 +835,7 @@ class TMethod {
    * A TMethod is equal to a TMethod or a Method if and only if all its fields
    * match
    * 
-   * This operation is not commutative
+   * This operation is not commutative for TMethods and Methods
    */
   public boolean equals(Object o) {
     if (o instanceof Method) {
@@ -805,12 +853,65 @@ class TMethod {
   }
 
   /*
-   * Checks if method is equal to any of the elements in tMethods
+   * Checks if method is equal (using TMethod.equals(method)) to any of the
+   * elements in tMethods
    */
   @SuppressWarnings("unlikely-arg-type")
   public static boolean elementOf(Method method, TMethod[] tMethods) {
     for (TMethod t : tMethods) {
       if (t.equals(method))
+        return true;
+    }
+    return false;
+  }
+}
+
+
+/*
+ * Stores information about Fields. Is meant to be compared to instances of
+ * java.lang.reflect.Field (which has no public constructor).
+ */
+@SuppressWarnings("rawtypes")
+class TField {
+  private int modifiers;
+  private Class type;
+  private String name;
+
+  /*
+   * Creates a new TField by saving all the given arguments directly to the
+   * corresponding fields
+   */
+  public TField(int modifiers, Class type, String name) {
+    this.modifiers = modifiers;
+    this.type = type;
+    this.name = name;
+  }
+
+  /*
+   * A TField is equal to a TField or a Field if and only if all its fields match
+   * 
+   * This operation is not commutative for TFields and Fields
+   */
+  public boolean equals(Object o) {
+    if (o instanceof Field) {
+      Field f = (Field) o;
+      return this.modifiers == f.getModifiers() && this.type.equals(f.getType())
+          && this.name.equals(f.getName());
+    } else if (o instanceof TField) {
+      TField t = (TField) o;
+      return this.modifiers == t.modifiers && this.type.equals(t.type) && this.name.equals(t.name);
+    } else
+      return false;
+  }
+
+  /*
+   * Checks if field is equal (using TField.equals(field)) to any of the elements
+   * in tFields
+   */
+  @SuppressWarnings("unlikely-arg-type")
+  public static boolean elementOf(Field field, TField[] tFields) {
+    for (TField t : tFields) {
+      if (t.equals(field))
         return true;
     }
     return false;
@@ -851,6 +952,8 @@ public class Tester {
       "assignment2.SolitaireCipher_decode",
       "assignment2.SolitaireCipher_extra_methods",
       "assignment2.Deck_extra_methods",
+      "assignment2.SolitaireCipher_extra_fields",
+      "assignment2.Deck_extra_fields",
       "assignment2.SolitaireCipher_decode_secret_message"
   };
 
