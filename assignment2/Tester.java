@@ -25,6 +25,7 @@ class Deck_Deck_one_card implements Runnable {
   }
 }
 
+
 class Deck_Deck_all_cards implements Runnable {
   @Override
   public void run() {
@@ -41,6 +42,7 @@ class Deck_Deck_all_cards implements Runnable {
     System.out.println("All cards deck test passed.");
   }
 }
+
 
 class Deck_Deck_too_many_cards implements Runnable {
   @Override
@@ -60,6 +62,7 @@ class Deck_Deck_too_many_cards implements Runnable {
   }
 }
 
+
 class Deck_Deck_too_few_cards implements Runnable {
   @Override
   public void run() {
@@ -77,6 +80,7 @@ class Deck_Deck_too_few_cards implements Runnable {
     }
   }
 }
+
 
 class Deck_Deck_too_many_suits implements Runnable {
   @Override
@@ -96,6 +100,7 @@ class Deck_Deck_too_many_suits implements Runnable {
   }
 }
 
+
 class Deck_Deck_too_few_suits implements Runnable {
   @Override
   public void run() {
@@ -113,6 +118,7 @@ class Deck_Deck_too_few_suits implements Runnable {
     }
   }
 }
+
 
 class Deck_Deck_copy implements Runnable {
   @Override
@@ -132,6 +138,7 @@ class Deck_Deck_copy implements Runnable {
     System.out.println("Deck copy test passed.");
   }
 }
+
 
 /*
  * Checks that Deck(Deck d) produces a deep copy of d (i.e. changing d does not
@@ -161,6 +168,7 @@ class Deck_Deck_deep_copy implements Runnable {
   }
 }
 
+
 class Deck_addCard implements Runnable {
   @Override
   public void run() {
@@ -180,6 +188,7 @@ class Deck_addCard implements Runnable {
   }
 }
 
+
 class Deck_numOfCards implements Runnable {
   @Override
   public void run() {
@@ -193,6 +202,7 @@ class Deck_numOfCards implements Runnable {
     System.out.println("Deck numOfCards test passed.");
   }
 }
+
 
 class Deck_shuffle implements Runnable {
   @Override
@@ -212,6 +222,7 @@ class Deck_shuffle implements Runnable {
     System.out.println("Deck shuffle test passed.");
   }
 }
+
 
 class Deck_locate_joker implements Runnable {
   @Override
@@ -264,6 +275,7 @@ class Deck_locate_joker implements Runnable {
     System.out.println("Deck locate joker test passed.");
   }
 }
+
 
 class Deck_locate_joker_top_or_bottom_cards implements Runnable {
   @Override
@@ -319,6 +331,7 @@ class Deck_locate_joker_top_or_bottom_cards implements Runnable {
   }
 }
 
+
 class Deck_locate_joker_no_jokers implements Runnable {
   @Override
   public void run() {
@@ -344,6 +357,7 @@ class Deck_locate_joker_no_jokers implements Runnable {
   }
 }
 
+
 class Deck_move_card_no_change implements Runnable {
   @Override
   public void run() {
@@ -364,6 +378,7 @@ class Deck_move_card_no_change implements Runnable {
     System.out.println("Deck card move no change test passed.");
   }
 }
+
 
 class Deck_move_card_with_change implements Runnable {
   @Override
@@ -386,6 +401,7 @@ class Deck_move_card_with_change implements Runnable {
   }
 }
 
+
 class Deck_triple_cut_regular implements Runnable {
   @Override
   public void run() {
@@ -405,6 +421,7 @@ class Deck_triple_cut_regular implements Runnable {
     System.out.println("Deck regular triple cut test passed.");
   }
 }
+
 
 class Deck_triple_cut_empty_end implements Runnable {
   @Override
@@ -427,6 +444,7 @@ class Deck_triple_cut_empty_end implements Runnable {
   }
 }
 
+
 class Deck_triple_cut_empty_start implements Runnable {
   @Override
   public void run() {
@@ -447,6 +465,7 @@ class Deck_triple_cut_empty_start implements Runnable {
     System.out.println("Deck empty start triple cut test passed.");
   }
 }
+
 
 class Deck_triple_cut_both_ends_empty implements Runnable {
   @Override
@@ -470,6 +489,7 @@ class Deck_triple_cut_both_ends_empty implements Runnable {
   }
 }
 
+
 class Deck_count_cut_no_change_1 implements Runnable {
   @Override
   public void run() {
@@ -490,6 +510,7 @@ class Deck_count_cut_no_change_1 implements Runnable {
     System.out.println("Deck count cut no change test 1 passed.");
   }
 }
+
 
 class Deck_count_cut_no_change_2 implements Runnable {
   @Override
@@ -512,6 +533,7 @@ class Deck_count_cut_no_change_2 implements Runnable {
   }
 }
 
+
 class Deck_count_cut_with_change implements Runnable {
   @Override
   public void run() {
@@ -532,6 +554,7 @@ class Deck_count_cut_with_change implements Runnable {
   }
 }
 
+
 class Deck_look_up_card_joker implements Runnable {
   @Override
   public void run() {
@@ -550,6 +573,7 @@ class Deck_look_up_card_joker implements Runnable {
   }
 }
 
+
 class Deck_look_up_card_regular implements Runnable {
   @Override
   public void run() {
@@ -565,6 +589,7 @@ class Deck_look_up_card_regular implements Runnable {
     System.out.println("Deck look up card joker test passed.");
   }
 }
+
 
 class Deck_generate_next_keystream_value implements Runnable {
   @Override
@@ -587,6 +612,7 @@ class Deck_generate_next_keystream_value implements Runnable {
   }
 }
 
+
 class SolitaireCipher_get_keystream implements Runnable {
   @Override
   public void run() {
@@ -604,6 +630,7 @@ class SolitaireCipher_get_keystream implements Runnable {
     System.out.println("SolitaireCipher keystream generation test passed.");
   }
 }
+
 
 class SolitaireCipher_encode implements Runnable {
   @Override
@@ -623,6 +650,7 @@ class SolitaireCipher_encode implements Runnable {
   }
 }
 
+
 class SolitaireCipher_decode implements Runnable {
   @Override
   public void run() {
@@ -640,6 +668,7 @@ class SolitaireCipher_decode implements Runnable {
     System.out.println("SolitaireCipher message decoding test passed.");
   }
 }
+
 
 class SolitaireCipher_decode_secret_message implements Runnable {
   @Override
@@ -659,6 +688,7 @@ class SolitaireCipher_decode_secret_message implements Runnable {
         "SolitaireCipher message decoding yielded: " + result + " on announcement secret message.");
   }
 }
+
 
 /*
  * Checks that every non-private method in SolitaireCipher is one of the
@@ -691,6 +721,7 @@ class SolitaireCipher_extra_methods implements Runnable {
     return requiredMethods;
   }
 }
+
 
 /*
  * Checks that every non-private method in Deck is one of the required methods
@@ -729,6 +760,7 @@ class Deck_extra_methods implements Runnable {
     return requiredMethods;
   }
 }
+
 
 /*
  * Stores data about methods. Is meant to be compared to instances of
@@ -787,6 +819,7 @@ class TMethod {
     return false;
   }
 }
+
 
 public class Tester {
   static String[] tests = {
