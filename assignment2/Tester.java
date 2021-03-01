@@ -1,6 +1,7 @@
 package assignment2;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -787,6 +788,29 @@ class Deck_extra_fields implements Runnable {
 }
 
 
+class General_helper_code implements Runnable {
+  private static String[] tests = {
+      "assignment2.Deck_extra_methods",
+      "assignment2.Deck_extra_fields",
+      "assignment2.SolitaireCipher_extra_methods",
+      "assignment2.SolitaireCipher_extra_fields"
+  };
+
+  @Override
+  public void run() {
+    for (String str : tests) {
+      try {
+        Runnable testCase = (Runnable) Class.forName(str).getDeclaredConstructor().newInstance();
+        testCase.run();
+      } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+          | InvocationTargetException | NoSuchMethodException | SecurityException
+          | ClassNotFoundException e) {
+      }
+    }
+  }
+}
+
+
 class SolitaireCipher_decode_secret_message implements Runnable {
   @Override
   public void run() {
@@ -921,6 +945,7 @@ class TField {
 
 public class Tester {
   static String[] tests = {
+      "assignment2.General_helper_code",
       "assignment2.Deck_Deck_one_card",
       "assignment2.Deck_Deck_all_cards",
       "assignment2.Deck_Deck_too_many_cards",
@@ -950,10 +975,6 @@ public class Tester {
       "assignment2.SolitaireCipher_get_keystream",
       "assignment2.SolitaireCipher_encode",
       "assignment2.SolitaireCipher_decode",
-      "assignment2.SolitaireCipher_extra_methods",
-      "assignment2.Deck_extra_methods",
-      "assignment2.SolitaireCipher_extra_fields",
-      "assignment2.Deck_extra_fields",
       "assignment2.SolitaireCipher_decode_secret_message"
   };
 
