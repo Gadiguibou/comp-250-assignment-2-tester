@@ -1,5 +1,6 @@
 package assignment2;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -788,12 +789,70 @@ class Deck_extra_fields implements Runnable {
 }
 
 
+class SolitaireCipher_extra_constructors implements Runnable {
+  @Override
+  @SuppressWarnings("rawtypes")
+  public void run() {
+    Class<SolitaireCipher> cipherClass = SolitaireCipher.class;
+    TConstructor[] requiredConstructors = getRequiredConstructors();
+
+    for (Constructor c : cipherClass.getDeclaredConstructors()) {
+      if (!TConstructor.elementOf(c, requiredConstructors))
+        throw new AssertionError("Extra constructor found: " + c);
+    }
+
+    System.out.println("SolitaireCipher extra constructors test passed.");
+  }
+
+  public TConstructor[] getRequiredConstructors() {
+    TConstructor[] requiredConstructors = new TConstructor[1];
+    // Get rid of "class " at beginning of name
+    String name = SolitaireCipher.class.toString().split(" ")[1];
+
+    requiredConstructors[0] = new TConstructor(Modifier.PUBLIC, name,
+        new Class[] { Deck.class }, new Class[0]);
+    return requiredConstructors;
+  }
+}
+
+
+class Deck_extra_constructors implements Runnable {
+  @SuppressWarnings("rawtypes")
+  @Override
+  public void run() {
+    Class<Deck> deckClass = Deck.class;
+    TConstructor[] requiredConstructors = getRequiredConstructors();
+
+    for (Constructor c : deckClass.getDeclaredConstructors()) {
+      if (!TConstructor.elementOf(c, requiredConstructors))
+        throw new AssertionError("Extra constructor found: " + c);
+    }
+
+    System.out.println("Deck extra constructors test passed.");
+  }
+
+  public TConstructor[] getRequiredConstructors() {
+    TConstructor[] requiredConstructors = new TConstructor[3];
+    // Get rid of "class" at beginning of name
+    String name = Deck.class.toString().split(" ")[1];
+
+    requiredConstructors[0] = new TConstructor(Modifier.PUBLIC, name, new Class[] { Deck.class }, new Class[0]);
+    requiredConstructors[1] = new TConstructor(Modifier.PUBLIC, name, new Class[] { int.class, int.class },
+        new Class[0]);
+    requiredConstructors[2] = new TConstructor(Modifier.PUBLIC, name, new Class[0], new Class[0]);
+    return requiredConstructors;
+  }
+}
+
+
 class General_helper_code implements Runnable {
   private static String[] tests = {
       "assignment2.Deck_extra_methods",
       "assignment2.Deck_extra_fields",
+      "assignment2.Deck_extra_constructors",
       "assignment2.SolitaireCipher_extra_methods",
-      "assignment2.SolitaireCipher_extra_fields"
+      "assignment2.SolitaireCipher_extra_fields",
+      "assignment2.SolitaireCipher_extra_constructors"
   };
 
   @Override
@@ -936,6 +995,65 @@ class TField {
   public static boolean elementOf(Field field, TField[] tFields) {
     for (TField t : tFields) {
       if (t.equals(field))
+        return true;
+    }
+    return false;
+  }
+}
+
+
+/*
+ * Stores information about Constructors. Is meant to be compared to instances
+ * of java.lang.reflect.Constructor (which has no public constructor*).
+ * 
+ * * "Ironic. He could constructor others, but not himself."
+ */
+@SuppressWarnings("rawtypes")
+class TConstructor {
+  private int modifiers;
+  private String name;
+  private Class[] params;
+  private Class[] exceptions;
+
+  /*
+   * Creates a new TMethod by saving all the given arguments directly to the
+   * corresponding fields
+   */
+  public TConstructor(int modifiers, String name, Class[] params, Class[] exceptions) {
+    this.modifiers = modifiers;
+    this.name = name;
+    this.params = params;
+    this.exceptions = exceptions;
+  }
+
+  /*
+   * A TConstructor is equal to a TConstructor or a Constructor if and only if all
+   * its fields match
+   * 
+   * This operation is not commutative for TConstructors and Constructors
+   */
+  public boolean equals(Object o) {
+    if (o instanceof Constructor) {
+      Constructor c = (Constructor) o;
+      return this.modifiers == c.getModifiers() && this.name.equals(c.getName())
+          && Arrays.equals(this.params, c.getParameterTypes())
+          && Arrays.equals(this.exceptions, c.getExceptionTypes());
+    } else if (o instanceof TConstructor) {
+      TConstructor t = (TConstructor) o;
+      return this.modifiers == t.modifiers && this.name.equals(t.name)
+          && Arrays.equals(this.params, t.params) && Arrays.equals(this.exceptions, t.exceptions);
+    } else
+      return false;
+  }
+
+  /*
+   * Checks if constructor is equal (using TConstructor.equals(constructor)) to
+   * any of the elements in tConstructors
+   */
+  @SuppressWarnings("unlikely-arg-type")
+  public static boolean elementOf(Constructor constructor, TConstructor[] tConstructors) {
+    for (TConstructor t : tConstructors) {
+      if (t.equals(constructor))
         return true;
     }
     return false;
