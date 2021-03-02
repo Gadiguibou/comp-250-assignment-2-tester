@@ -2,5 +2,5 @@
 /.settings/
 /.project
 *.class
-assignment2/SolitaireCipher.java
-assignment2/Deck.java
+SolitaireCipher.java
+Deck.java
