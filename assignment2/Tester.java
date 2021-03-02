@@ -1,6 +1,3 @@
-// TODO locateJoker() returns null when no Joker is there (@991)
-// TODO @991_f3
-
 package assignment2;
 
 import java.lang.reflect.Constructor;
