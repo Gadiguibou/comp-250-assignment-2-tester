@@ -3,6 +3,7 @@ package assignment2;
 import java.util.HashSet;
 import java.util.Set;
 
+
 class AddCard_AllRef implements Runnable {
   @Override
   public void run() {
@@ -91,8 +92,7 @@ class AddCard_SingleCard implements Runnable {
     Deck.Card c1 = deck.new PlayingCard(Deck.suitsInOrder[0], 1); // AC
     deck.addCard(c1);
     if (!(c1.prev == c1 && c1.next == c1)) {
-      throw new AssertionError(
-          "Card references are not correctly set up when the deck contains only ONE card.");
+      throw new AssertionError("Card references are not correctly set up when the deck contains only ONE card.");
     }
     System.out.println("Test passed.");
   }
@@ -167,8 +167,7 @@ class DeepCopy_CircularNext implements Runnable {
       if (cur instanceof Deck.PlayingCard) { // both are PlayingCard
         if (cards[i].getValue() != cur.getValue()) {
           throw new AssertionError("The card at the next position of ."
-              + i + " from head must have value: " + cards[i].getValue() + " but got: "
-              + cur.getValue());
+              + i + " from head must have value: " + cards[i].getValue() + " but got: " + cur.getValue());
         }
       } else { // both are Joker
         String cardColor = ((Deck.Joker) cards[i]).getColor();
@@ -227,8 +226,7 @@ class DeepCopy_CircularPrev implements Runnable {
       if (cur instanceof Deck.PlayingCard) { // both are PlayingCard
         if (cards[i].getValue() != cur.getValue()) {
           throw new AssertionError("The card at the prev position of ."
-              + j + " from head must have value: " + cards[i].getValue() + " but got: "
-              + cur.getValue());
+              + j + " from head must have value: " + cards[i].getValue() + " but got: " + cur.getValue());
         }
       } else { // both are Joker
         String cardColor = ((Deck.Joker) cards[i]).getColor();
@@ -260,8 +258,7 @@ class LocateJoker_Test1 implements Runnable {
     Deck.Card received = tdeck.locateJoker("red");
     if (expected != received) {
       throw new AssertionError("The reference returned was incorrect. The second card should have " +
-          "been returned. Expected the card " + expected.toString() + " with reference "
-          + expected.hashCode()
+          "been returned. Expected the card " + expected.toString() + " with reference " + expected.hashCode()
           + " but instead got the card " + received + " with reference " + received.hashCode());
     }
     System.out.println("Test passed.");
@@ -279,8 +276,7 @@ class LocateJoker_Test2 implements Runnable {
     Deck.Card received = tdeck.locateJoker("black");
     if (expected != received) {
       throw new AssertionError("The reference returned was incorrect. The second card should have " +
-          "been returned. Expected the card " + expected.toString() + " with reference "
-          + expected.hashCode()
+          "been returned. Expected the card " + expected.toString() + " with reference " + expected.hashCode()
           + " but instead got the card " + received + " with reference " + received.hashCode());
     }
     System.out.println("Test passed.");
@@ -298,8 +294,7 @@ class LocateJoker_Test3 implements Runnable {
     Deck.Card received = tdeck.locateJoker("black");
     if (expected != received) {
       throw new AssertionError("The reference returned was incorrect. The second card should have " +
-          "been returned. Expected the card " + expected.toString() + " with reference "
-          + expected.hashCode()
+          "been returned. Expected the card " + expected.toString() + " with reference " + expected.hashCode()
           + " but instead got the card " + received + " with reference " + received.hashCode());
     }
     System.out.println("Test passed.");
@@ -315,8 +310,7 @@ class LookUpCard_Test1 implements Runnable {
     Deck.Card received = tdeck.lookUpCard();
     if (expected != received) {
       throw new AssertionError("The reference returned was incorrect. The second card should have " +
-          "been returned. Expected the card " + expected.toString() + " with reference "
-          + expected.hashCode()
+          "been returned. Expected the card " + expected.toString() + " with reference " + expected.hashCode()
           + " but instead got the card " + received + " with reference " + received.hashCode());
     }
     System.out.println("Test passed.");
@@ -358,6 +352,7 @@ class LookUpCard_Test3 implements Runnable {
     tdeck.head = tdeck.new PlayingCard(Deck.suitsInOrder[2], 7);
     tdeck.head.next = old_head.next;
     tdeck.head.prev = old_head.prev;
+
 
     Deck.Card received = tdeck.lookUpCard();
     if (received != null) {
