@@ -1,3 +1,6 @@
 /.classpath
 /.settings/
 /.project
+*.class
+assignment2/SolitaireCipher.java
+assignment2/Deck.java
