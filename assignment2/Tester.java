@@ -1,4 +1,3 @@
-// TODO Extra private fields are allowed (@1073)
 // TODO locateJoker() returns null when no Joker is there (@991)
 // TODO @991_f3
 
@@ -13,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+// Official tests
+// ==========================================================================================
 
 class AddCard_AllRef implements Runnable {
   @Override
@@ -731,6 +733,9 @@ class Shuffle_Three implements Runnable {
   }
 }
 
+// Student tests
+//==========================================================================================
+
 
 class Deck_Deck_one_card implements Runnable {
   @Override
@@ -1405,9 +1410,8 @@ class SolitaireCipher_extra_methods implements Runnable {
     TMethod[] requiredMethods = getRequiredMethods();
 
     for (Method m : cipherClass.getDeclaredMethods()) {
-      if (!Modifier.isPrivate(m.getModifiers())) {
-        if (!TMethod.elementOf(m, requiredMethods))
-          throw new AssertionError("Extra non-private method found: " + m);
+      if (!Modifier.isPrivate(m.getModifiers()) && !TMethod.elementOf(m, requiredMethods)) {
+        throw new AssertionError("Extra non-private method found: " + m);
       }
     }
 
@@ -1437,9 +1441,8 @@ class Deck_extra_methods implements Runnable {
     TMethod[] requiredMethods = getRequiredMethods();
 
     for (Method m : deckClass.getDeclaredMethods()) {
-      if (!Modifier.isPrivate(m.getModifiers())) {
-        if (!TMethod.elementOf(m, requiredMethods))
-          throw new AssertionError("Extra non-private method found: " + m);
+      if (!Modifier.isPrivate(m.getModifiers()) && !TMethod.elementOf(m, requiredMethods)) {
+        throw new AssertionError("Extra non-private method found: " + m);
       }
     }
 
@@ -1473,7 +1476,7 @@ class SolitaireCipher_extra_fields implements Runnable {
     TField[] requiredFields = getRequiredFields();
 
     for (Field f : cipherClass.getDeclaredFields()) {
-      if (!TField.elementOf(f, requiredFields))
+      if (!Modifier.isPrivate(f.getModifiers()) && !TField.elementOf(f, requiredFields))
         throw new AssertionError("Extra field found: " + f);
     }
 
@@ -1495,7 +1498,7 @@ class Deck_extra_fields implements Runnable {
     TField[] requiredFields = getRequiredFields();
 
     for (Field f : deckClass.getDeclaredFields()) {
-      if (!TField.elementOf(f, requiredFields))
+      if (!Modifier.isPrivate(f.getModifiers()) && !TField.elementOf(f, requiredFields))
         throw new AssertionError("Extra field found: " + f);
     }
 
@@ -1660,6 +1663,9 @@ class SolitaireCipher_decode_secret_message implements Runnable {
         "SolitaireCipher message decoding yielded: " + result + " on announcement secret message.");
   }
 }
+
+// Utility classes
+//==========================================================================================
 
 
 /*
@@ -1831,6 +1837,9 @@ class TConstructor {
     return false;
   }
 }
+
+// Main class
+//================================================================================
 
 
 public class Tester {
