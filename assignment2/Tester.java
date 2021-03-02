@@ -574,7 +574,7 @@ class Shuffle_Example implements Runnable {
     Deck.Card cur = deck.head;
     for (int i = 0; i < 12; i++) {
       Deck.Card expected = arrDeck[shuffledIndex[i]];
-      if (cur != expected) {
+      if (cur.getValue() != expected.getValue()) {
         throw new AssertionError("Deck is not correctly shuffled.\n" +
             "Expected card at index " + i + " is " + expected + " but got " + cur);
       }
@@ -620,7 +620,7 @@ class Shuffle_FullDeck implements Runnable {
     Deck.Card cur = deck.head;
     for (int i = 0; i < 54; i++) {
       Deck.Card expected = arrDeck[shuffledIndex[i]];
-      if (cur != expected) {
+      if (cur.getValue() != expected.getValue()) {
         throw new AssertionError("Deck is not correctly shuffled.\n" +
             "Expected card at index " + i + " is " + expected + " but got " + cur);
       }
@@ -681,7 +681,8 @@ class Shuffle_SingleCard implements Runnable {
 
     deck.shuffle();
 
-    if (!(deck.head == c && c.next == c && c.prev == c)) {
+    if (!(deck.head.getValue() == c.getValue() &&
+        c.next.getValue() == c.getValue() && c.prev.getValue() == c.getValue())) {
       throw new AssertionError("Deck is not correctly shuffled when it only has one card.");
     }
     System.out.println("Test passed.");
@@ -711,16 +712,16 @@ class Shuffle_Three implements Runnable {
     // AC, 4C, 5C, 3C, 2C
 
     // expected second pass
-    // 4C, 2C, 3C, 5C, AC
+    // 5C, AC, 4C, 2C, 3C
 
     // expected third pass
-    // 4C, AC, 5C, 2C, 3C
+    // AC, 5C, 3C, 2C, 4C
 
-    int[] shuffledIndex = { 3, 0, 4, 1, 2 };
+    int[] shuffledIndex = { 0, 4, 2, 1, 3 };
     Deck.Card cur = deck.head;
     for (int i = 0; i < 5; i++) {
       Deck.Card expected = arrDeck[shuffledIndex[i]];
-      if (cur != expected) {
+      if (cur.getValue() != expected.getValue()) {
         throw new AssertionError("Deck is not correctly shuffled.\n" +
             "Expected card at index " + i + " is " + expected + " but got " + cur);
       }
