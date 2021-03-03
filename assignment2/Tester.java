@@ -1983,8 +1983,11 @@ public class Tester {
       "assignment2.Deck_generate_next_keystream_value",
       "assignment2.SolitaireCipher_get_keystream",
       "assignment2.SolitaireCipher_encode",
-      "assignment2.SolitaireCipher_decode","assignment2.SolitaireCipher_encode2","assignment2.SolitaireCipher_decode2",
-          "assignment2.SolitaireCipher_charShiftEncode", "assignment2.SolitaireCipher_charShiftDecode",
+      "assignment2.SolitaireCipher_decode",
+      "assignment2.SolitaireCipher_encode2",
+      "assignment2.SolitaireCipher_decode2",
+      "assignment2.SolitaireCipher_charShiftEncode",
+      "assignment2.SolitaireCipher_charShiftDecode",
       "assignment2.SolitaireCipher_decode_secret_message"
   };
 
