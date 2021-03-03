@@ -1377,6 +1377,30 @@ class SolitaireCipher_encode implements Runnable {
   }
 }
 
+class SolitaireCipher_encode2 implements Runnable {
+  @Override
+  public void run() {
+
+    Deck deck = new Deck(13, 3);
+    //System.out.println("Original deck");
+    //System.out.println(Tester.deckToString(deck));
+    Deck.gen.setSeed(20210314);
+    deck.shuffle();
+    //System.out.println("Shuffled Deck");
+    //System.out.println(Tester.deckToString(deck));
+    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
+    String result = solitaireCipher.encode("thereareplacesirememberallmylife!!");
+    //System.out.println(Tester.deckToString(deck));
+    //System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
+    String expected = "HWCWHIULXTRHLQLADPFUFSGAJFLFYCZZ";
+
+    if (!result.equals(expected)) {
+      throw new AssertionError(
+              "The resulting encoded message is " + result + " but should have been " + expected);
+    }
+    System.out.println("SolitaireCipher message encoding test #2 passed.");
+  }
+}
 
 class SolitaireCipher_decode implements Runnable {
   @Override
@@ -1393,6 +1417,70 @@ class SolitaireCipher_decode implements Runnable {
           "The resulting decoded message is " + result + " but should have been " + expected);
     }
     System.out.println("SolitaireCipher message decoding test passed.");
+  }
+}
+
+class SolitaireCipher_decode2 implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(13, 3);
+    Deck.gen.setSeed(20210314);
+    deck.shuffle();
+    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
+    String result = solitaireCipher.decode("HWCWHIULXTRHLQLADPFUFSGAJFLFYCZZ");
+    //System.out.println(Tester.deckToString(deck));
+    //System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
+    String expected = "THEREAREPLACESIREMEMBERALLMYLIFE";
+
+    if (!result.equals(expected)) {
+      throw new AssertionError(
+              "The resulting decoded message is " + result + " but should have been " + expected);
+    }
+    System.out.println("SolitaireCipher message decoding test #2 passed.");
+  }
+}
+
+class SolitaireCipher_charShiftEncode implements Runnable {
+  @Override
+  public void run() {
+
+    Deck deck = new Deck(13, 3);
+    //System.out.println("Original deck");
+    //System.out.println(Tester.deckToString(deck));
+    Deck.gen.setSeed(20210314);
+    deck.shuffle();
+    //System.out.println("Shuffled Deck");
+    //System.out.println(Tester.deckToString(deck));
+    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
+    String result = solitaireCipher.encode("BOBDHUSANTA");
+    //System.out.println(Tester.deckToString(deck));
+    //System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
+    String expected = "PDZIKCVHVBR";
+
+    if (!result.equals(expected)) {
+      throw new AssertionError(
+              "The resulting encoded message is " + result + " but should have been " + expected);
+    }
+    System.out.println("SolitaireCipher charShift Encode test #1 passed.");
+  }
+}
+class SolitaireCipher_charShiftDecode implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(13, 3);
+    Deck.gen.setSeed(20210314);
+    deck.shuffle();
+    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
+    String result = solitaireCipher.decode("PDZIKCVHVBR");
+    //System.out.println(Tester.deckToString(deck));
+    //System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
+    String expected = "BOBDHUSANTA";
+
+    if (!result.equals(expected)) {
+      throw new AssertionError(
+              "The resulting decoded message is " + result + " but should have been " + expected);
+    }
+    System.out.println("SolitaireCipher message decoding test #2 passed.");
   }
 }
 
@@ -1896,6 +1984,10 @@ public class Tester {
       "assignment2.SolitaireCipher_get_keystream",
       "assignment2.SolitaireCipher_encode",
       "assignment2.SolitaireCipher_decode",
+      "assignment2.SolitaireCipher_encode2",
+      "assignment2.SolitaireCipher_decode2",
+      "assignment2.SolitaireCipher_charShiftEncode",
+      "assignment2.SolitaireCipher_charShiftDecode",
       "assignment2.SolitaireCipher_decode_secret_message"
   };
 
@@ -1978,3 +2070,4 @@ public class Tester {
     return out.substring(0, out.length() - 1);
   }
 }
+
