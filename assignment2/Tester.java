@@ -1847,6 +1847,7 @@ class shuffleDeck2 implements Runnable {
     @Override
     public void run() {
         // create a deck
+        Deck.gen.setSeed(10);
         Deck d1 = new Deck();
         String fullSuitName="";
 
