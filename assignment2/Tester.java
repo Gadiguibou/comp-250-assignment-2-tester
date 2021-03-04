@@ -1377,30 +1377,32 @@ class SolitaireCipher_encode implements Runnable {
   }
 }
 
+
 class SolitaireCipher_encode2 implements Runnable {
   @Override
   public void run() {
 
     Deck deck = new Deck(13, 3);
-    //System.out.println("Original deck");
-    //System.out.println(Tester.deckToString(deck));
+    // System.out.println("Original deck");
+    // System.out.println(Tester.deckToString(deck));
     Deck.gen.setSeed(20210314);
     deck.shuffle();
-    //System.out.println("Shuffled Deck");
-    //System.out.println(Tester.deckToString(deck));
+    // System.out.println("Shuffled Deck");
+    // System.out.println(Tester.deckToString(deck));
     SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
     String result = solitaireCipher.encode("thereareplacesirememberallmylife!!");
-    //System.out.println(Tester.deckToString(deck));
-    //System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
+    // System.out.println(Tester.deckToString(deck));
+    // System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
     String expected = "HWCWHIULXTRHLQLADPFUFSGAJFLFYCZZ";
 
     if (!result.equals(expected)) {
       throw new AssertionError(
-              "The resulting encoded message is " + result + " but should have been " + expected);
+          "The resulting encoded message is " + result + " but should have been " + expected);
     }
     System.out.println("SolitaireCipher message encoding test #2 passed.");
   }
 }
+
 
 class SolitaireCipher_decode implements Runnable {
   @Override
@@ -1420,6 +1422,7 @@ class SolitaireCipher_decode implements Runnable {
   }
 }
 
+
 class SolitaireCipher_decode2 implements Runnable {
   @Override
   public void run() {
@@ -1428,38 +1431,39 @@ class SolitaireCipher_decode2 implements Runnable {
     deck.shuffle();
     SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
     String result = solitaireCipher.decode("HWCWHIULXTRHLQLADPFUFSGAJFLFYCZZ");
-    //System.out.println(Tester.deckToString(deck));
-    //System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
+    // System.out.println(Tester.deckToString(deck));
+    // System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
     String expected = "THEREAREPLACESIREMEMBERALLMYLIFE";
 
     if (!result.equals(expected)) {
       throw new AssertionError(
-              "The resulting decoded message is " + result + " but should have been " + expected);
+          "The resulting decoded message is " + result + " but should have been " + expected);
     }
     System.out.println("SolitaireCipher message decoding test #2 passed.");
   }
 }
+
 
 class SolitaireCipher_charShiftEncode implements Runnable {
   @Override
   public void run() {
 
     Deck deck = new Deck(13, 3);
-    //System.out.println("Original deck");
-    //System.out.println(Tester.deckToString(deck));
+    // System.out.println("Original deck");
+    // System.out.println(Tester.deckToString(deck));
     Deck.gen.setSeed(20210314);
     deck.shuffle();
-    //System.out.println("Shuffled Deck");
-    //System.out.println(Tester.deckToString(deck));
+    // System.out.println("Shuffled Deck");
+    // System.out.println(Tester.deckToString(deck));
     SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
     String result = solitaireCipher.encode("BOBDHUSANTA");
-    //System.out.println(Tester.deckToString(deck));
-    //System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
+    // System.out.println(Tester.deckToString(deck));
+    // System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
     String expected = "PDZIKCVHVBR";
 
     if (!result.equals(expected)) {
       throw new AssertionError(
-              "The resulting encoded message is " + result + " but should have been " + expected);
+          "The resulting encoded message is " + result + " but should have been " + expected);
     }
     System.out.println("SolitaireCipher charShift Encode test #1 passed.");
   }
@@ -1474,8 +1478,8 @@ class SolitaireCipher_charShiftDecode implements Runnable {
     deck.shuffle();
     SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
     String result = solitaireCipher.decode("PDZIKCVHVBR");
-    //System.out.println(Tester.deckToString(deck));
-    //System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
+    // System.out.println(Tester.deckToString(deck));
+    // System.out.println(Arrays.toString(solitaireCipher.getKeystream(22)));
     String expected = "BOBDHUSANTA";
 
     if (!result.equals(expected)) {
@@ -1485,6 +1489,7 @@ class SolitaireCipher_charShiftDecode implements Runnable {
     System.out.println("SolitaireCipher message decoding test #2 passed.");
   }
 }
+
 
 /*
  * Checks that every non-private method in SolitaireCipher is one of the
@@ -1706,11 +1711,11 @@ class Deck_extra_classes implements Runnable {
 
 
 class General_helper_code implements Runnable {
-  private static String[] tests = {"assignment2.Deck_extra_methods",
+  private static String[] tests = { "assignment2.Deck_extra_methods",
       "assignment2.Deck_extra_fields", "assignment2.Deck_extra_constructors",
       "assignment2.Deck_extra_classes", "assignment2.SolitaireCipher_extra_methods",
       "assignment2.SolitaireCipher_extra_fields", "assignment2.SolitaireCipher_extra_constructors",
-      "assignment2.SolitaireCipher_extra_classes"};
+      "assignment2.SolitaireCipher_extra_classes" };
 
   @Override
   public void run() {
@@ -1736,8 +1741,7 @@ class SolitaireCipher_encode_random implements Runnable {
     SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
     String result = solitaireCipher.encode(
         "XM;iny[r=@Hk4C!j9~GHk:S2)9H\"7z/\nQ;g+CZ3hFv1*Uvrj\"FH%> tK\"DP.Rz	K.1t'[?'s?j_,ZV,``0L4'7[[9c}uiL49=A|_/oTzu;|*w9@tELWFtA3s%/y\\W\"snI,W!ULYv9.6}?ReY\\~/n x6jA/5XdsEgK\"awJ");
-    String expected =
-        "CQSTJWQJVYPJXSWCYGKKMAZIIBZOLEZOFDORBRXYEPMMBGOSKBABZWOLISYRPTSWJYIPNBQUPKPCYLBOGBHXNQ";
+    String expected = "CQSTJWQJVYPJXSWCYGKKMAZIIBZOLEZOFDORBRXYEPMMBGOSKBABZWOLISYRPTSWJYIPNBQUPKPCYLBOGBHXNQ";
 
     if (!result.equals(expected)) {
       throw new AssertionError(
@@ -1747,6 +1751,7 @@ class SolitaireCipher_encode_random implements Runnable {
   }
 }
 
+
 class SolitaireCipher_decode_random implements Runnable {
   @Override
   public void run() {
@@ -1754,7 +1759,8 @@ class SolitaireCipher_decode_random implements Runnable {
     Deck.gen.setSeed(20210303);
     deck.shuffle();
     SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
-    String result = solitaireCipher.decode("CQSTJWQJVYPJXSWCYGKKMAZIIBZOLEZOFDORBRXYEPMMBGOSKBABZWOLISYRPTSWJYIPNBQUPKPCYLBOGBHXNQ");
+    String result = solitaireCipher.decode(
+        "CQSTJWQJVYPJXSWCYGKKMAZIIBZOLEZOFDORBRXYEPMMBGOSKBABZWOLISYRPTSWJYIPNBQUPKPCYLBOGBHXNQ");
     String expected = "XMINYRHKCJGHKSHZQGCZHFVUVRJFHTKDPRZKTSJZVLCUILAOTZUWTELWFTASYWSNIWULYVREYNXJAXDSEGKAWJ";
 
     if (!result.equals(expected)) {
@@ -1786,1060 +1792,710 @@ class SolitaireCipher_decode_secret_message implements Runnable {
 }
 
 
-////////////////////////////////////
-// Question 1
-
-class default_deck implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck(1,1);
-        Deck.Card current;
-
-        current = d1.head;
-        int numCards = d1.numOfCards;
-        String currentCard="";
-        String result = "";
-
-        while(current!= d1.head || numCards !=0){
-
-            result=result+current.toString();
-
-            current=current.next;
-            numCards--;
-        }
-        numCards = d1.numOfCards;
-        String expected ="ACRJBJ";
-        if (!result.equals(expected) || numCards != 3){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected + "No Cards: " + numCards);
-        }
-        System.out.println("default_deck test passed.");
-    }
-}
-
 class default_deck_more_than_one_card implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck(4,3);
-        Deck.Card current;
+  @Override
+  public void run() {
+    Deck d1 = new Deck(4, 3);
+    Deck.Card current;
 
-        current = d1.head;
-        int numCards = d1.numOfCards;
-        String currentCard="";
-        String result = "";
+    current = d1.head;
+    int numCards = d1.numOfCards;
+    String currentCard = "";
+    String result = "";
 
-        while(current!= d1.head || numCards !=0){
-            result=result+current.toString()+" ";
+    while (current != d1.head || numCards != 0) {
+      result = result + current.toString() + " ";
 
-            current=current.next;
-            numCards--;
-        }
-
-        numCards = d1.numOfCards;
-
-        String expected ="AC 2C 3C 4C AD 2D 3D 4D AH 2H 3H 4H RJ BJ ";
-        if (!result.equals(expected) || numCards != 14){
-            throw new AssertionError("got returned " + result
-                    + " but expected " + expected + "No Cards: " + numCards);
-        }
-        System.out.println("default_deck_more_than_one_card test passed.");
+      current = current.next;
+      numCards--;
     }
+
+    numCards = d1.numOfCards;
+
+    String expected = "AC 2C 3C 4C AD 2D 3D 4D AH 2H 3H 4H RJ BJ ";
+    if (!result.equals(expected) || numCards != 14) {
+      throw new AssertionError("got returned " + result
+          + " but expected " + expected + "No Cards: " + numCards);
+    }
+    System.out.println("default_deck_more_than_one_card test passed.");
+  }
 }
 ////////////////////////////////////
 
 ////////////////////////////////////
 // Question 2
 
+
 class deep_copy_deck implements Runnable {
-    @Override
-    public void run() {
-        // create a deck 4*3
-        Deck oldDeck = new Deck(4,3);
-        Deck newDeck = new Deck(oldDeck);
+  @Override
+  public void run() {
+    // create a deck 4*3
+    Deck oldDeck = new Deck(4, 3);
+    Deck newDeck = new Deck(oldDeck);
 
-        Deck.Card currentOldDeck;
-        Deck.Card currentNewDeck;
-        currentOldDeck = oldDeck.head;
-        currentNewDeck = newDeck.head;
+    Deck.Card currentOldDeck;
+    Deck.Card currentNewDeck;
+    currentOldDeck = oldDeck.head;
+    currentNewDeck = newDeck.head;
 
-        int numCards = oldDeck.numOfCards;
-        //String current="";
-        String resultOldDeck = "";
-        String resultNewdDeck = "";
+    int numCards = oldDeck.numOfCards;
+    // String current="";
+    String resultOldDeck = "";
+    String resultNewdDeck = "";
 
-        while(currentOldDeck!= oldDeck.head || numCards !=0){
-            resultOldDeck=resultOldDeck+currentOldDeck.toString()+" ";
-            resultNewdDeck=resultNewdDeck+currentNewDeck.toString()+" ";
+    while (currentOldDeck != oldDeck.head || numCards != 0) {
+      resultOldDeck = resultOldDeck + currentOldDeck.toString() + " ";
+      resultNewdDeck = resultNewdDeck + currentNewDeck.toString() + " ";
 
-            currentOldDeck=currentOldDeck.next;
-            currentNewDeck=currentNewDeck.next;
-            numCards--;
-        }
-
-        numCards = oldDeck.numOfCards;
-
-        String expected ="AC 2C 3C 4C AD 2D 3D 4D AH 2H 3H 4H RJ BJ ";
-        if (!resultNewdDeck.equals(resultOldDeck) ||
-                oldDeck.numOfCards!= newDeck.numOfCards){
-            throw new AssertionError("got old deck " + resultOldDeck
-                    + " new Deck" + resultNewdDeck + "No Cards in old and new deck"
-                    + oldDeck.numOfCards + " " + newDeck.numOfCards);
-        }
-        System.out.println("Deep copy test passed.");
+      currentOldDeck = currentOldDeck.next;
+      currentNewDeck = currentNewDeck.next;
+      numCards--;
     }
+
+    numCards = oldDeck.numOfCards;
+
+    String expected = "AC 2C 3C 4C AD 2D 3D 4D AH 2H 3H 4H RJ BJ ";
+    if (!resultNewdDeck.equals(resultOldDeck) ||
+        oldDeck.numOfCards != newDeck.numOfCards) {
+      throw new AssertionError("got old deck " + resultOldDeck
+          + " new Deck" + resultNewdDeck + "No Cards in old and new deck"
+          + oldDeck.numOfCards + " " + newDeck.numOfCards);
+    }
+    System.out.println("Deep copy test passed.");
+  }
 }
-
-
 
 ////////////////////////////////////
 ////////////////////////////////////
 // Question 3
 
+
 class addOneCardToBottom implements Runnable {
-    @Override
-    public void run() {
-        // create a deck 4*3
-        Deck newDeck = new Deck(4,3);
-        Deck.Card newCard = newDeck.new PlayingCard("c",5);
-        Deck.Card current;
+  @Override
+  public void run() {
+    // create a deck 4*3
+    Deck newDeck = new Deck(4, 3);
+    Deck.Card newCard = newDeck.new PlayingCard("c", 5);
+    Deck.Card current;
 
-        newDeck.addCard(newCard);
-        current = newDeck.head;
-        int numCards = newDeck.numOfCards;
-        String currentCard="";
-        String result = "";
+    newDeck.addCard(newCard);
+    current = newDeck.head;
+    int numCards = newDeck.numOfCards;
+    String currentCard = "";
+    String result = "";
 
-        while(current != newDeck.head || numCards !=0){
+    while (current != newDeck.head || numCards != 0) {
 
-            result=result+current.toString()+" ";
+      result = result + current.toString() + " ";
 
-            current=current.next;
-            numCards--;
-        }
-        numCards = newDeck.numOfCards;
-        String expected ="AC 2C 3C 4C AD 2D 3D 4D AH 2H 3H 4H RJ BJ 5C ";
-        if (!result.equals(expected) || numCards != 15){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected + "No Cards: " + numCards);
-        }
-        System.out.println("addOneCardToBottom test passed.");
+      current = current.next;
+      numCards--;
     }
+    numCards = newDeck.numOfCards;
+    String expected = "AC 2C 3C 4C AD 2D 3D 4D AH 2H 3H 4H RJ BJ 5C ";
+    if (!result.equals(expected) || numCards != 15) {
+      throw new AssertionError("got " + result
+          + " but expected " + expected + "No Cards: " + numCards);
+    }
+    System.out.println("addOneCardToBottom test passed.");
+  }
 }
 
 ////////////////////////////////////
 // Question 4
 
+
 class shuffleDeck implements Runnable {
-    @Override
-    public void run() {
-        // create a deck 4*3
-        Deck newDeck = new Deck(4,3);
-        Deck.Card current = newDeck.head;
-        int numCards = newDeck.numOfCards;
-        String beforeShuffle="";
+  @Override
+  public void run() {
+    // create a deck 4*3
+    Deck newDeck = new Deck(4, 3);
+    Deck.Card current = newDeck.head;
+    int numCards = newDeck.numOfCards;
+    String beforeShuffle = "";
 
-        while(current != newDeck.head || numCards !=0){
+    while (current != newDeck.head || numCards != 0) {
 
-            beforeShuffle=beforeShuffle+current.toString()+" ";
+      beforeShuffle = beforeShuffle + current.toString() + " ";
 
-            current=current.next;
-            numCards--;
-        }
-        newDeck.shuffle();
-
-        current = newDeck.head;
-        numCards = newDeck.numOfCards;
-        String afterShuffle="";
-
-        while(current != newDeck.head || numCards !=0){
-
-            afterShuffle=afterShuffle+current.toString()+" ";
-
-            current=current.next;
-            numCards--;
-        }
-
-        if ((beforeShuffle.equals(afterShuffle))){
-            throw new AssertionError("the deck was not shuffled " );
-        }
-        System.out.println("Shuffle test passed.");
-        System.gc();
+      current = current.next;
+      numCards--;
     }
-}
-class shuffleDeck2 implements Runnable {
-    @Override
-    public void run() {
-        // create a deck
-        Deck.gen.setSeed(10);
-        Deck d1 = new Deck();
-        String fullSuitName="";
+    newDeck.shuffle();
 
-        String[] suits = {"C","C","C","C","C","D","D","D","D","D","J","J"};
-        int[] rank = {1,2,3,4,5,1,2,3,4,5,0,0};
+    current = newDeck.head;
+    numCards = newDeck.numOfCards;
+    String afterShuffle = "";
 
-        for (int i=0;i<rank.length;i++){
-            if (i == 11){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 10 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
+    while (current != newDeck.head || numCards != 0) {
 
-            }else{
-                switch(suits[i]) {
-                    case "C":
-                        fullSuitName ="clubs";
-                        break;
-                    case "D":
-                        fullSuitName ="diamonds";
-                        break;
-                    case "H":
-                        fullSuitName ="hearts";
-                        break;
-                    case "S":
-                        fullSuitName ="spades";
-                        break;
+      afterShuffle = afterShuffle + current.toString() + " ";
 
-                }
-                Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
-                d1.addCard(newCard);
-            }
-        }
-        Deck.Card current = d1.head;
-        int numCards = d1.numOfCards;
-        String beforeShuffle="";
-
-        while(current != d1.head || numCards !=0){
-            beforeShuffle=beforeShuffle+current.toString()+" ";
-            current=current.next;
-            numCards--;
-        }
-
-        d1.shuffle();
-
-        current = d1.head;
-        numCards = d1.numOfCards;
-        String afterShuffle="";
-        System.out.println();
-        while(current != d1.head || numCards !=0){
-            afterShuffle=afterShuffle+current.toString()+" ";
-            current=current.next;
-            numCards--;
-        }
-        System.out.println("Original deck: " +beforeShuffle);
-        System.out.println("Shuffle deck: "+ afterShuffle);
-        String expected = "3C 3D AD 5C BJ 2C 2D 4D AC RJ 4C 5D ";
-        if (!expected.equals(afterShuffle)){
-            throw new AssertionError("got: " + afterShuffle +
-                    " but expected: "+ expected);
-        }
-        System.out.println("shuffleDeck2 test passed.");
+      current = current.next;
+      numCards--;
     }
+
+    if ((beforeShuffle.equals(afterShuffle))) {
+      throw new AssertionError("the deck was not shuffled ");
+    }
+    System.out.println("Shuffle test passed.");
+    System.gc();
+  }
 }
+
+
 ////////////////////////////////////
 // Question 5
 class locatejoker implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck(4,3);
-        Deck.Card getJoker=d1.locateJoker("black");
-        String returnedJoker=getJoker.toString();
+  @Override
+  public void run() {
+    Deck d1 = new Deck(4, 3);
+    Deck.Card getJoker = d1.locateJoker("black");
+    String returnedJoker = getJoker.toString();
 
-        if (!returnedJoker.equals("BJ")){
-            throw new AssertionError("Wrong card returned");
-        }
-        System.out.println("locatejoker test passed.");
+    if (!returnedJoker.equals("BJ")) {
+      throw new AssertionError("Wrong card returned");
     }
+    System.out.println("locatejoker test passed.");
+  }
 }
 
 
 class noJokersInDeck implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        for (int i=1;i<=13;i++){
-            Deck.Card newCard = d1.new PlayingCard("c",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("d",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("h",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("s",i);
-            d1.addCard(newCard);
-        }
-
-        Deck.Card getJoker=d1.locateJoker("black");
-
-
-        if (d1.locateJoker("red") != null || d1.locateJoker("black")!= null){
-            throw new AssertionError("this deck shouldn't have jokers");
-        }
-        System.out.println("noJokersInDeck test passed.");
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
+    for (int i = 1; i <= 13; i++) {
+      Deck.Card newCard = d1.new PlayingCard("c", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("d", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("h", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("s", i);
+      d1.addCard(newCard);
     }
-}
 
+    Deck.Card getJoker = d1.locateJoker("black");
+
+    if (d1.locateJoker("red") != null || d1.locateJoker("black") != null) {
+      throw new AssertionError("this deck shouldn't have jokers");
+    }
+    System.out.println("noJokersInDeck test passed.");
+  }
+}
 
 ////////////////////////////////////
 
 ////////////////////////////////////
 // Question 6
 
+
 class moveCardHead implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        for (int i=1;i<=1;i++){
-            Deck.Card newCard = d1.new PlayingCard("c",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("d",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("h",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("s",i);
-            d1.addCard(newCard);
-        }
-
-
-        Deck.Card current = d1.head;
-        d1.moveCard(current,2);
-
-
-        String result = "";
-        int noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            result=result+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        String expected = "AC AS AD AH ";
-        if (!expected.equals(result)){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected );
-        }
-        System.out.println("moveCardHead test passed.");
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
+    for (int i = 1; i <= 1; i++) {
+      Deck.Card newCard = d1.new PlayingCard("c", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("d", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("h", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("s", i);
+      d1.addCard(newCard);
     }
-}
 
+    Deck.Card current = d1.head;
+    d1.moveCard(current, 2);
+
+    String result = "";
+    int noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      result = result + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+    String expected = "AC AS AD AH ";
+    if (!expected.equals(result)) {
+      throw new AssertionError("got " + result
+          + " but expected " + expected);
+    }
+    System.out.println("moveCardHead test passed.");
+  }
+}
 
 
 class moveCardTailby1 implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        for (int i=1;i<=1;i++){
-            Deck.Card newCard = d1.new PlayingCard("c",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("d",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("h",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("s",i);
-            d1.addCard(newCard);
-        }
-
-
-        Deck.Card current = d1.head.prev;
-        d1.moveCard(current,1);
-
-
-        String result = "";
-        int noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            result=result+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        String expected = "AC AS AD AH ";
-        if (!expected.equals(result)){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected );
-        }
-        System.out.println("moveCardTailby1 test passed.");
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
+    for (int i = 1; i <= 1; i++) {
+      Deck.Card newCard = d1.new PlayingCard("c", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("d", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("h", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("s", i);
+      d1.addCard(newCard);
     }
+
+    Deck.Card current = d1.head.prev;
+    d1.moveCard(current, 1);
+
+    String result = "";
+    int noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      result = result + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+    String expected = "AC AS AD AH ";
+    if (!expected.equals(result)) {
+      throw new AssertionError("got " + result
+          + " but expected " + expected);
+    }
+    System.out.println("moveCardTailby1 test passed.");
+  }
 }
 
+
 class moveCardTailby2 implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        for (int i=1;i<=1;i++){
-            Deck.Card newCard = d1.new PlayingCard("c",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("d",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("h",i);
-            d1.addCard(newCard);
-            newCard = d1.new PlayingCard("s",i);
-            d1.addCard(newCard);
-        }
-
-
-        Deck.Card current = d1.head.prev;
-        d1.moveCard(current,2);
-
-
-        String result = "";
-        int noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            result=result+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        String expected = "AC AD AS AH ";
-        if (!expected.equals(result)){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected );
-        }
-        System.out.println("moveCardTailby2 test passed.");
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
+    for (int i = 1; i <= 1; i++) {
+      Deck.Card newCard = d1.new PlayingCard("c", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("d", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("h", i);
+      d1.addCard(newCard);
+      newCard = d1.new PlayingCard("s", i);
+      d1.addCard(newCard);
     }
+
+    Deck.Card current = d1.head.prev;
+    d1.moveCard(current, 2);
+
+    String result = "";
+    int noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      result = result + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+    String expected = "AC AD AS AH ";
+    if (!expected.equals(result)) {
+      throw new AssertionError("got " + result
+          + " but expected " + expected);
+    }
+    System.out.println("moveCardTailby2 test passed.");
+  }
 }
 
 ////////////////////////////////////
 // Question 7
 
+
 class tripleCut implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
 
-        String[] suits = {"c","c","c","c","c","d","d","d","d","c","c",
-                "j","c","c","d","d","d","d","c",
-                "j","c","c","c","d","d","d","d","d"};
-        int[] rank = {1,4,7,10,13,3,6,9,12,3,6,0,9,12,2,5,8,11,2,0,5,8,11,1,4,7,10,13};
-        for (int i=0;i<rank.length;i++){
-            if (i == 11){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 19 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
+    String[] suits = { "c", "c", "c", "c", "c", "d", "d", "d", "d", "c", "c",
+        "j", "c", "c", "d", "d", "d", "d", "c",
+        "j", "c", "c", "c", "d", "d", "d", "d", "d" };
+    int[] rank = { 1, 4, 7, 10, 13, 3, 6, 9, 12, 3, 6, 0, 9, 12, 2, 5, 8, 11, 2, 0, 5, 8, 11, 1, 4, 7, 10,
+        13 };
+    for (int i = 0; i < rank.length; i++) {
+      if (i == 11) {
+        Deck.Card newJoker = d1.new Joker("black");
+        d1.addCard(newJoker);
+      } else if (i == 19) {
+        Deck.Card newJoker = d1.new Joker("red");
+        d1.addCard(newJoker);
 
-            }else{
-                Deck.Card newCard = d1.new PlayingCard(suits[i],rank[i]);
-                d1.addCard(newCard);
+      } else {
+        Deck.Card newCard = d1.new PlayingCard(suits[i], rank[i]);
+        d1.addCard(newCard);
 
-            }
-        }
-
-
-        Deck.Card current = d1.head;
-
-        String originalDeck = "";
-        int noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            originalDeck=originalDeck+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        System.out.println("original deck :" + originalDeck);
-        Deck.Card firstJoker =d1.locateJoker("black");
-        Deck.Card secondJoker =d1.locateJoker("red");
-        d1.tripleCut(firstJoker,secondJoker);
-
-        String result = "";
-
-        noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            result=result+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        System.out.println("new deck :" + result);
-        String expected = "5C 8C JC AD 4D 7D 10D KD BJ 9C QC 2D 5D 8D JD 2C RJ AC 4C 7C 10C KC 3D 6D 9D QD 3C 6C ";
-        if (!expected.equals(result)){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected );
-        }
-        System.out.println("tripleCut test passed.");
+      }
     }
+
+    Deck.Card current = d1.head;
+
+    String originalDeck = "";
+    int noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      originalDeck = originalDeck + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+    System.out.println("original deck :" + originalDeck);
+    Deck.Card firstJoker = d1.locateJoker("black");
+    Deck.Card secondJoker = d1.locateJoker("red");
+    d1.tripleCut(firstJoker, secondJoker);
+
+    String result = "";
+
+    noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      result = result + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+    System.out.println("new deck :" + result);
+    String expected = "5C 8C JC AD 4D 7D 10D KD BJ 9C QC 2D 5D 8D JD 2C RJ AC 4C 7C 10C KC 3D 6D 9D QD 3C 6C ";
+    if (!expected.equals(result)) {
+      throw new AssertionError("got " + result
+          + " but expected " + expected);
+    }
+    System.out.println("tripleCut test passed.");
+  }
 }
 
 
 class tripleCutFirstCardHead implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
 
-        String[] suits = {"j","c","c","d","d","d","d","c",
-                "j","c","c","c","d","d","d","d","d"};
-        int[] rank = {0,9,12,2,5,8,11,2,0,5,8,11,1,4,7,10,13};
-        for (int i=0;i<rank.length;i++){
-            if (i == 0){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 8 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
+    String[] suits = { "j", "c", "c", "d", "d", "d", "d", "c",
+        "j", "c", "c", "c", "d", "d", "d", "d", "d" };
+    int[] rank = { 0, 9, 12, 2, 5, 8, 11, 2, 0, 5, 8, 11, 1, 4, 7, 10, 13 };
+    for (int i = 0; i < rank.length; i++) {
+      if (i == 0) {
+        Deck.Card newJoker = d1.new Joker("black");
+        d1.addCard(newJoker);
+      } else if (i == 8) {
+        Deck.Card newJoker = d1.new Joker("red");
+        d1.addCard(newJoker);
 
-            }else{
-                Deck.Card newCard = d1.new PlayingCard(suits[i],rank[i]);
-                d1.addCard(newCard);
+      } else {
+        Deck.Card newCard = d1.new PlayingCard(suits[i], rank[i]);
+        d1.addCard(newCard);
 
-            }
-        }
-
-
-        Deck.Card current = d1.head;
-
-        String originalDeck = "";
-        int noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            originalDeck=originalDeck+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        System.out.println("original deck :" + originalDeck);
-        Deck.Card firstJoker =d1.locateJoker("black");
-        Deck.Card secondJoker =d1.locateJoker("red");
-        d1.tripleCut(firstJoker,secondJoker);
-
-        String result = "";
-
-        noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            result=result+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        System.out.println("new deck :" + result);
-        String expected = "5C 8C JC AD 4D 7D 10D KD BJ 9C QC 2D 5D 8D JD 2C RJ ";
-        if (!expected.equals(result)){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected );
-        }
-        System.out.println("tripleCutFirstCardHead test passed.");
+      }
     }
+
+    Deck.Card current = d1.head;
+
+    String originalDeck = "";
+    int noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      originalDeck = originalDeck + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+    System.out.println("original deck :" + originalDeck);
+    Deck.Card firstJoker = d1.locateJoker("black");
+    Deck.Card secondJoker = d1.locateJoker("red");
+    d1.tripleCut(firstJoker, secondJoker);
+
+    String result = "";
+
+    noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      result = result + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+    System.out.println("new deck :" + result);
+    String expected = "5C 8C JC AD 4D 7D 10D KD BJ 9C QC 2D 5D 8D JD 2C RJ ";
+    if (!expected.equals(result)) {
+      throw new AssertionError("got " + result
+          + " but expected " + expected);
+    }
+    System.out.println("tripleCutFirstCardHead test passed.");
+  }
 }
 
 
 class tripleCutsecondcardbottom implements Runnable {
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
 
-        String[] suits = {"d","c","c","j","d","d","d","c",
-                "c","c","c","c","d","d","d","d","j"};
-        int[] rank = {0,9,12,2,5,8,11,2,0,5,8,11,1,4,7,10,4};
-        for (int i=0;i<rank.length;i++){
-            if (i == 3){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 16 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
+    String[] suits = { "d", "c", "c", "j", "d", "d", "d", "c",
+        "c", "c", "c", "c", "d", "d", "d", "d", "j" };
+    int[] rank = { 0, 9, 12, 2, 5, 8, 11, 2, 0, 5, 8, 11, 1, 4, 7, 10, 4 };
+    for (int i = 0; i < rank.length; i++) {
+      if (i == 3) {
+        Deck.Card newJoker = d1.new Joker("black");
+        d1.addCard(newJoker);
+      } else if (i == 16) {
+        Deck.Card newJoker = d1.new Joker("red");
+        d1.addCard(newJoker);
 
-            }else{
-                Deck.Card newCard = d1.new PlayingCard(suits[i],rank[i]);
-                d1.addCard(newCard);
+      } else {
+        Deck.Card newCard = d1.new PlayingCard(suits[i], rank[i]);
+        d1.addCard(newCard);
 
-            }
-        }
-
-
-        Deck.Card current = d1.head;
-
-        String originalDeck = "";
-        int noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-            originalDeck=originalDeck+current.toString()+ " ";
-            current=current.next;
-            noCards--;
-        }
-        System.out.println("original deck: " + originalDeck);
-        Deck.Card firstJoker =d1.locateJoker("black");
-        Deck.Card secondJoker =d1.locateJoker("red");
-        d1.tripleCut(firstJoker,secondJoker);
-
-        String result = "";
-
-        noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-            result=result+current.toString()+ " ";
-            current=current.next;
-            noCards--;
-        }
-        System.out.println("new deck :" + result);
-        String expected = "BJ 5D 8D JD 2C 0C 5C 8C JC AD 4D 7D 10D RJ 0D 9C QC ";
-        if (!expected.equals(result)){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected );
-        }
-        System.out.println("tripleCutsecondcardbottom test passed.");
+      }
     }
+
+    Deck.Card current = d1.head;
+
+    String originalDeck = "";
+    int noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+      originalDeck = originalDeck + current.toString() + " ";
+      current = current.next;
+      noCards--;
+    }
+    Deck.Card firstJoker = d1.locateJoker("black");
+    Deck.Card secondJoker = d1.locateJoker("red");
+    d1.tripleCut(firstJoker, secondJoker);
+
+    String result = "";
+
+    noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+      result = result + current.toString() + " ";
+      current = current.next;
+      noCards--;
+    }
+    String expected = "BJ 5D 8D JD 2C 0C 5C 8C JC AD 4D 7D 10D RJ 0D 9C QC ";
+    if (!expected.equals(result)) {
+      throw new AssertionError("got " + result
+          + " but expected " + expected);
+    }
+    System.out.println("tripleCutsecondcardbottom test passed.");
+  }
 }
 
 ////////////////////////////////////
 // Question 8
 
+
 class countCut implements Runnable {
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
+    String fullSuitName = "";
 
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        String fullSuitName="";
+    /*
+     * String[] suits = {"c","c","c","c","c","d","d","d","d","c","c",
+     * "j","c","c","d","d","d","d","c", "j","c","c","c","d","d","d","d","d"}; int[]
+     * rank = {1,4,7,10,13,3,6,9,12,3,6,0,9,12,2,5,8,11,2,0,5,8,11,1,4,7,10,4};
+     */
 
-        /*String[] suits = {"c","c","c","c","c","d","d","d","d","c","c",
-                "j","c","c","d","d","d","d","c",
-                "j","c","c","c","d","d","d","d","d"};
-        int[] rank = {1,4,7,10,13,3,6,9,12,3,6,0,9,12,2,5,8,11,2,0,5,8,11,1,4,7,10,4};*/
+    // String[] suits = {"c","c","c","c","c","c","c","c","c","c","c","c","c"};
+    // int[] rank = {13,12,11,10,9,8,7,6,5,4,3,2,5};
+    String[] suits = { "C", "C", "C", "D", "D", "D", "D", "D", "J",
+        "C", "C", "D", "D", "D", "D", "C", "J",
+        "C", "C", "C", "C", "C", "D", "D", "D", "D", "C", "C" };
 
-        //String[] suits = {"c","c","c","c","c","c","c","c","c","c","c","c","c"};
-        //int[] rank = {13,12,11,10,9,8,7,6,5,4,3,2,5};
-        String[] suits = {"C","C","C","D","D","D", "D", "D", "J",
-                "C", "C", "D", "D", "D", "D", "C", "J",
-                "C", "C", "C", "C", "C", "D", "D","D", "D", "C", "C"};
+    int[] rank = { 5, 8, 11, 1, 4, 7, 10, 13, 0,
+        9, 12, 2, 5, 8, 11, 2, 0,
+        1, 4, 7, 10, 13, 3, 6, 9, 12, 3, 6 };
+    for (int i = 0; i < rank.length; i++) {
+      if (i == 8) {
+        Deck.Card newJoker = d1.new Joker("black");
+        d1.addCard(newJoker);
+      } else if (i == 16) {
+        Deck.Card newJoker = d1.new Joker("red");
+        d1.addCard(newJoker);
 
-        int[] rank = {5,  8, 11,  1, 4,  7, 10,13, 0,
-                9, 12, 2,  5, 8, 11, 2,0,
-                1,  4, 7, 10,13, 3, 6, 9,12, 3, 6};
-        for (int i=0;i<rank.length;i++){
-            if (i == 8){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 16 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
+      } else {
+        switch (suits[i]) {
+        case "C":
+          fullSuitName = "clubs";
+          break;
+        case "D":
+          fullSuitName = "diamonds";
+          break;
+        case "H":
+          fullSuitName = "hearts";
+          break;
+        case "S":
+          fullSuitName = "spades";
+          break;
 
-            }else{
-                switch(suits[i]) {
-                    case "C":
-                        fullSuitName ="clubs";
-                        break;
-                    case "D":
-                        fullSuitName ="diamonds";
-                        break;
-                    case "H":
-                        fullSuitName ="hearts";
-                        break;
-                    case "S":
-                        fullSuitName ="spades";
-                        break;
-
-                }
-                Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
-                d1.addCard(newCard);
-
-            }
         }
+        Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
+        d1.addCard(newCard);
 
-
-        Deck.Card current = d1.head;
-
-        String originalDeck = "";
-        int noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            originalDeck=originalDeck+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        System.out.println("original deck :" + originalDeck);
-
-        d1.countCut();
-
-        String result = "";
-
-        noCards=d1.numOfCards;
-        current = d1.head;
-        while(current != d1.head || noCards !=0){
-
-            result=result+current.toString()+ " ";
-
-            current=current.next;
-            noCards--;
-        }
-        System.out.println("new deck :" + result);
-        String expected = "10D KD BJ 9C QC 2D 5D 8D JD 2C RJ AC 4C 7C 10C KC 3D 6D 9D QD 3C 5C 8C JC AD 4D 7D 6C ";
-        if (!expected.equals(result)){
-            throw new AssertionError("got " + result
-                    + " but expected " + expected );
-        }
-        System.out.println("countCut test passed.");
+      }
     }
-}
 
+    Deck.Card current = d1.head;
+
+    String originalDeck = "";
+    int noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      originalDeck = originalDeck + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+
+    d1.countCut();
+
+    String result = "";
+
+    noCards = d1.numOfCards;
+    current = d1.head;
+    while (current != d1.head || noCards != 0) {
+
+      result = result + current.toString() + " ";
+
+      current = current.next;
+      noCards--;
+    }
+    String expected = "10D KD BJ 9C QC 2D 5D 8D JD 2C RJ AC 4C 7C 10C KC 3D 6D 9D QD 3C 5C 8C JC AD 4D 7D 6C ";
+    if (!expected.equals(result)) {
+      throw new AssertionError("got " + result
+          + " but expected " + expected);
+    }
+    System.out.println("countCut test passed.");
+  }
+}
 
 ////////////////////////////////////
 // Question 9
 
+
 class lookUpCard implements Runnable {
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
+    String fullSuitName = "";
 
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        String fullSuitName="";
+    String[] suits = { "C", "C", "C", "D", "D", "D", "D", "D", "J",
+        "C", "C", "D", "D", "D", "D", "C", "J",
+        "C", "C", "C", "C", "C", "D", "D", "D", "D", "C", "C" };
 
+    int[] rank = { 5, 8, 11, 1, 4, 7, 10, 13, 0,
+        9, 12, 2, 5, 8, 11, 2, 0,
+        1, 4, 7, 10, 13, 3, 6, 9, 12, 3, 6 };
+    for (int i = 0; i < rank.length; i++) {
+      if (i == 8) {
+        Deck.Card newJoker = d1.new Joker("black");
+        d1.addCard(newJoker);
+      } else if (i == 16) {
+        Deck.Card newJoker = d1.new Joker("red");
+        d1.addCard(newJoker);
 
-        String[] suits = {"C","C","C","D","D","D", "D", "D", "J",
-                "C", "C", "D", "D", "D", "D", "C", "J",
-                "C", "C", "C", "C", "C", "D", "D","D", "D", "C", "C"};
+      } else {
+        switch (suits[i]) {
+        case "C":
+          fullSuitName = "clubs";
+          break;
+        case "D":
+          fullSuitName = "diamonds";
+          break;
+        case "H":
+          fullSuitName = "hearts";
+          break;
+        case "S":
+          fullSuitName = "spades";
+          break;
 
-        int[] rank = {5,  8, 11,  1, 4,  7, 10,13, 0,
-                9, 12, 2,  5, 8, 11, 2,0,
-                1,  4, 7, 10,13, 3, 6, 9,12, 3, 6};
-        for (int i=0;i<rank.length;i++){
-            if (i == 8){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 16 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
-
-            }else{
-                switch(suits[i]) {
-                    case "C":
-                        fullSuitName ="clubs";
-                        break;
-                    case "D":
-                        fullSuitName ="diamonds";
-                        break;
-                    case "H":
-                        fullSuitName ="hearts";
-                        break;
-                    case "S":
-                        fullSuitName ="spades";
-                        break;
-
-                }
-                Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
-                d1.addCard(newCard);
-
-            }
         }
+        Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
+        d1.addCard(newCard);
 
-        Deck.Card current = d1.head;
-        d1.countCut();
-
-        Deck.Card cardReturned = d1.lookUpCard();
-        System.out.println (cardReturned.toString());
-
-        String expected = "JC";
-
-        if (!cardReturned.toString().equals(expected)){
-            throw new AssertionError("got " + cardReturned.toString()
-                    + " but expected " + expected );
-        }
-        System.out.println("lookUpCard test passed.");
+      }
     }
+
+    Deck.Card current = d1.head;
+    d1.countCut();
+
+    Deck.Card cardReturned = d1.lookUpCard();
+
+    String expected = "JC";
+
+    if (!cardReturned.toString().equals(expected)) {
+      throw new AssertionError("got " + cardReturned.toString()
+          + " but expected " + expected);
+    }
+    System.out.println("lookUpCard test passed.");
+  }
 }
 
 ////////////////////////////////////
 // Question 10
+
 
 class generateNextKeystreamValue implements Runnable {
+  @Override
+  public void run() {
+    Deck d1 = new Deck();
+    String fullSuitName = "";
 
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        String fullSuitName="";
+    String[] suits = { "C", "C", "C", "C", "C", "D", "D", "D", "D",
+        "J", "C", "C", "C", "C", "D", "D", "D", "D",
+        "J", "C", "C", "C", "C", "D", "D", "D", "D", "D" };
 
+    int[] rank = { 1, 4, 7, 10, 13, 3, 6, 9, 12,
+        0, 3, 6, 9, 12, 2, 5, 8, 11,
+        0, 2, 5, 8, 11, 1, 4, 7, 10, 13 };
+    for (int i = 0; i < rank.length; i++) {
+      if (i == 9) {
+        Deck.Card newJoker = d1.new Joker("black");
+        d1.addCard(newJoker);
+      } else if (i == 18) {
+        Deck.Card newJoker = d1.new Joker("red");
+        d1.addCard(newJoker);
 
-        String[] suits = {"C","C","C","C","C","D","D","D","D",
-                "J","C","C","C","C","D","D","D","D",
-                "J","C","C","C","C","D","D","D","D","D"};
+      } else {
+        switch (suits[i]) {
+        case "C":
+          fullSuitName = "clubs";
+          break;
+        case "D":
+          fullSuitName = "diamonds";
+          break;
+        case "H":
+          fullSuitName = "hearts";
+          break;
+        case "S":
+          fullSuitName = "spades";
+          break;
 
-        int[] rank = { 1, 4, 7,10,13, 3, 6, 9,12,
-                0, 3, 6, 9,12, 2, 5, 8,11,
-                0,2, 5, 8,11, 1,4, 7,10,13};
-        for (int i=0;i<rank.length;i++){
-            if (i == 9){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 18 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
-
-            }else{
-                switch(suits[i]) {
-                    case "C":
-                        fullSuitName ="clubs";
-                        break;
-                    case "D":
-                        fullSuitName ="diamonds";
-                        break;
-                    case "H":
-                        fullSuitName ="hearts";
-                        break;
-                    case "S":
-                        fullSuitName ="spades";
-                        break;
-
-                }
-                Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
-                d1.addCard(newCard);
-
-            }
         }
-        int valueReturned = d1.generateNextKeystreamValue()
-                ;
-        //d1.countCut();
-        if (valueReturned != 11){
-            throw new AssertionError("got " + valueReturned
-                    + " but expected 11 " );
-        }
-        System.out.println("generateNextKeystreamValue test passed.");
+        Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
+        d1.addCard(newCard);
+
+      }
     }
+    int valueReturned = d1.generateNextKeystreamValue();
+    // d1.countCut();
+    if (valueReturned != 11) {
+      throw new AssertionError("got " + valueReturned
+          + " but expected 11 ");
+    }
+    System.out.println("generateNextKeystreamValue test passed.");
+  }
 }
-
-////////////////////////////////////
-// Question 10
-
-class SolitaireCiphertest implements Runnable {
-    // helper to print the deck
-    public void printdeck (Deck deckToPrint){
-        String result="";
-        Deck.Card actual=deckToPrint.head;
-        int noCard=deckToPrint.numOfCards;
-        while(actual != deckToPrint.head || noCard !=0){
-
-            result=result+actual.toString()+ " ";
-
-            actual=actual.next;
-            noCard--;
-        }
-        System.out.println(result);
-    }
-
-
-
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        String fullSuitName="";
-
-
-        String[] suits = {"C","D","D","C","J","C","D","D","C","J","C","D"};
-        int[] rank = {3,3,1,5,0,2,2,4,1,0,4,5};
-
-        for (int i=0;i<rank.length;i++){
-            if (i == 4){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 9 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
-
-            }else{
-                switch(suits[i]) {
-                    case "C":
-                        fullSuitName ="clubs";
-                        break;
-                    case "D":
-                        fullSuitName ="diamonds";
-                        break;
-                    case "H":
-                        fullSuitName ="hearts";
-                        break;
-                    case "S":
-                        fullSuitName ="spades";
-                        break;
-
-                }
-                Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
-                d1.addCard(newCard);
-
-            }
-        }
-        printdeck(d1);
-        // d1.shuffle();
-        //printdeck(d1);
-        SolitaireCipher sc = new SolitaireCipher(d1);
-
-        int [] key;
-        key = sc.getKeystream(12);
-
-        int [] expected = {4, 4, 15, 3, 3, 2, 1, 14, 16, 17, 17, 14};
-        boolean flag =true;
-        for (int i = 0;i<expected.length;i++){
-            if (expected[i]!=key[i]){
-
-            }
-        }
-        if (!flag){
-            throw new AssertionError("got " + Arrays.toString(key)
-                    + " but expected  " + Arrays.toString(expected));
-        }
-        System.out.println("SolitaireCiphertest test passed.");
-    }
-}
-
-////////////////////////////////////
-// Question 12
-
-class Encodetest implements Runnable {
-
-
-
-
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        String fullSuitName="";
-
-
-        //String[] suits = {"C","C","C","C","C","D","D","D","D","D","J","J"};
-        //int[] rank = {1,2,3,4,5,1,2,3,4,5,0,0};
-
-         String[] suits = {"C","D","D","C","J","C","D","D","C","J","C","D"};
-        int[] rank = {3,3,1,5,0,2,2,4,1,0,4,5};
-
-        for (int i=0;i<rank.length;i++){
-            if (i == 4){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 9 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
-
-            }else{
-                switch(suits[i]) {
-                    case "C":
-                        fullSuitName ="clubs";
-                        break;
-                    case "D":
-                        fullSuitName ="diamonds";
-                        break;
-                    case "H":
-                        fullSuitName ="hearts";
-                        break;
-                    case "S":
-                        fullSuitName ="spades";
-                        break;
-
-                }
-                Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
-                d1.addCard(newCard);
-
-            }
-        }
-
-        //d1.shuffle();
-        Deck.Card actual=d1.head;
-        int noCard = d1.numOfCards;
-        String result="";
-        while(actual != d1.head || noCard !=0){
-
-            result=result+actual.toString()+ " ";
-
-            actual=actual.next;
-            noCard--;
-        }
-        System.out.println(result);
-
-
-        SolitaireCipher sc = new SolitaireCipher(d1);
-
-        String encripted = sc.encode("Is that you, Bob?");
-        String expected = "MWIKDVZCKSFP";
-        boolean flag =true;
-
-        if (!encripted.equals(expected)){
-            throw new AssertionError("got " + encripted
-                    + " but expected  " + expected);
-        }
-        System.out.println("Encode test passed.");
-    }
-}
-
-////////////////////////////////////
-// Question 12
-
-class Decodetest implements Runnable {
-
-    @Override
-    public void run() {
-        Deck d1 = new Deck();
-        String fullSuitName="";
-
-
-        String[] suits = {"C","D","D","C","J","C","D","D","C","J","C","D"};
-        int[] rank = {3,3,1,5,0,2,2,4,1,0,4,5};
-
-        for (int i=0;i<rank.length;i++){
-            if (i == 4){
-                Deck.Card newJoker =d1.new Joker("black");
-                d1.addCard(newJoker);
-            }
-            else if (i== 9 ){
-                Deck.Card newJoker =d1.new Joker("red");
-                d1.addCard(newJoker);
-
-            }else{
-                switch(suits[i]) {
-                    case "C":
-                        fullSuitName ="clubs";
-                        break;
-                    case "D":
-                        fullSuitName ="diamonds";
-                        break;
-                    case "H":
-                        fullSuitName ="hearts";
-                        break;
-                    case "S":
-                        fullSuitName ="spades";
-                        break;
-
-                }
-                Deck.Card newCard = d1.new PlayingCard(fullSuitName, rank[i]);
-                d1.addCard(newCard);
-
-            }
-        }
-
-        // d1.shuffle();
-        //printdeck(d1);
-        SolitaireCipher sc = new SolitaireCipher(d1);
-
-        String encripted = sc.decode("MWIKDVZCKSFP");
-
-
-        String expected = "ISTHATYOUBOB";
-        boolean flag =true;
-
-        if (!encripted.equals(expected)){
-            throw new AssertionError("got " + encripted
-                    + " but expected  " + expected);
-        }
-        System.out.println("Encode test passed.");
-    }
-}
-////////////////////////////////////
-
-
 
 // Utility classes
 //==========================================================================================
@@ -3081,11 +2737,9 @@ public class Tester {
       "assignment2.SolitaireCipher_charShiftDecode",
       "assignment2.SolitaireCipher_encode_random",
       "assignment2.SolitaireCipher_decode_random",
-      "assignment2.default_deck",
       "assignment2.default_deck_more_than_one_card",
       "assignment2.deep_copy_deck",
       "assignment2.addOneCardToBottom",
-      "assignment2.shuffleDeck2",
       "assignment2.shuffleDeck",
       "assignment2.locatejoker",
       "assignment2.noJokersInDeck",
@@ -3098,9 +2752,6 @@ public class Tester {
       "assignment2.countCut",
       "assignment2.lookUpCard",
       "assignment2.generateNextKeystreamValue",
-      "assignment2.SolitaireCiphertest",
-      "assignment2.Encodetest",
-      "assignment2.Decodetest",
       "assignment2.SolitaireCipher_decode_secret_message",
   };
 
@@ -3183,4 +2834,3 @@ public class Tester {
     return out.substring(0, out.length() - 1);
   }
 }
-
