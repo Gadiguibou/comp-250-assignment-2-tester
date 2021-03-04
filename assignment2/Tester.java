@@ -3071,7 +3071,7 @@ public class Tester {
       "assignment2.Deck_count_cut_with_change",
       "assignment2.Deck_look_up_card_joker",
       "assignment2.Deck_look_up_card_regular",
-      "assignment2.Deck_generate_next_keystream_value"
+      "assignment2.Deck_generate_next_keystream_value",
       "assignment2.SolitaireCipher_get_keystream",
       "assignment2.SolitaireCipher_encode",
       "assignment2.SolitaireCipher_decode",
