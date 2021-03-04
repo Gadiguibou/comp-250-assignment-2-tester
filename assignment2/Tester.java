@@ -1740,7 +1740,7 @@ class SolitaireCipher_encode_random implements Runnable {
     deck.shuffle();
     SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
     String result = solitaireCipher.encode(
-        "XM;iny[r=@Hk4C!j9~GHk:S2)9H\"7z/\nQ;g+CZ3hFv1*Uvrj\"FH%> tK\"DP.Rz	K.1t'[?'s?j_,ZV,``0L4'7[[9c}uiL49=A|_/oTzu;|*w9@tELWFtA3s%/y\\W\"snI,W!ULYv9.6}?ReY\\~/n x6jA/5XdsEgK\"awJ");
+        "XM;iny[r=@Hk4C!j9~GHk:S2)9H\"7z/\nQ;g+CZ3hFv1*Uvrj\"FH%> tK\"DP.Rz    K.1t'[?'s?j_,ZV,``0L4'7[[9c}uiL49=A|_/oTzu;|*w9@tELWFtA3s%/y\\W\"snI,W!ULYv9.6}?ReY\\~/n x6jA/5XdsEgK\"awJ");
     String expected = "CQSTJWQJVYPJXSWCYGKKMAZIIBZOLEZOFDORBRXYEPMMBGOSKBABZWOLISYRPTSWJYIPNBQUPKPCYLBOGBHXNQ";
 
     if (!result.equals(expected)) {
@@ -2145,7 +2145,6 @@ class tripleCut implements Runnable {
       current = current.next;
       noCards--;
     }
-    System.out.println("original deck :" + originalDeck);
     Deck.Card firstJoker = d1.locateJoker("black");
     Deck.Card secondJoker = d1.locateJoker("red");
     d1.tripleCut(firstJoker, secondJoker);
@@ -2161,7 +2160,6 @@ class tripleCut implements Runnable {
       current = current.next;
       noCards--;
     }
-    System.out.println("new deck :" + result);
     String expected = "5C 8C JC AD 4D 7D 10D KD BJ 9C QC 2D 5D 8D JD 2C RJ AC 4C 7C 10C KC 3D 6D 9D QD 3C 6C ";
     if (!expected.equals(result)) {
       throw new AssertionError("got " + result
@@ -2207,7 +2205,6 @@ class tripleCutFirstCardHead implements Runnable {
       current = current.next;
       noCards--;
     }
-    System.out.println("original deck :" + originalDeck);
     Deck.Card firstJoker = d1.locateJoker("black");
     Deck.Card secondJoker = d1.locateJoker("red");
     d1.tripleCut(firstJoker, secondJoker);
@@ -2223,7 +2220,6 @@ class tripleCutFirstCardHead implements Runnable {
       current = current.next;
       noCards--;
     }
-    System.out.println("new deck :" + result);
     String expected = "5C 8C JC AD 4D 7D 10D KD BJ 9C QC 2D 5D 8D JD 2C RJ ";
     if (!expected.equals(result)) {
       throw new AssertionError("got " + result
