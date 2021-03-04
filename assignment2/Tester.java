@@ -1464,6 +1464,8 @@ class SolitaireCipher_charShiftEncode implements Runnable {
     System.out.println("SolitaireCipher charShift Encode test #1 passed.");
   }
 }
+
+
 class SolitaireCipher_charShiftDecode implements Runnable {
   @Override
   public void run() {
@@ -1478,12 +1480,11 @@ class SolitaireCipher_charShiftDecode implements Runnable {
 
     if (!result.equals(expected)) {
       throw new AssertionError(
-              "The resulting decoded message is " + result + " but should have been " + expected);
+          "The resulting decoded message is " + result + " but should have been " + expected);
     }
     System.out.println("SolitaireCipher message decoding test #2 passed.");
   }
 }
-
 
 /*
  * Checks that every non-private method in SolitaireCipher is one of the
@@ -1705,16 +1706,11 @@ class Deck_extra_classes implements Runnable {
 
 
 class General_helper_code implements Runnable {
-  private static String[] tests = {
-      "assignment2.Deck_extra_methods",
-      "assignment2.Deck_extra_fields",
-      "assignment2.Deck_extra_constructors",
-      "assignment2.Deck_extra_classes",
-      "assignment2.SolitaireCipher_extra_methods",
-      "assignment2.SolitaireCipher_extra_fields",
-      "assignment2.SolitaireCipher_extra_constructors",
-      "assignment2.SolitaireCipher_extra_classes"
-  };
+  private static String[] tests = {"assignment2.Deck_extra_methods",
+      "assignment2.Deck_extra_fields", "assignment2.Deck_extra_constructors",
+      "assignment2.Deck_extra_classes", "assignment2.SolitaireCipher_extra_methods",
+      "assignment2.SolitaireCipher_extra_fields", "assignment2.SolitaireCipher_extra_constructors",
+      "assignment2.SolitaireCipher_extra_classes"};
 
   @Override
   public void run() {
@@ -1727,6 +1723,45 @@ class General_helper_code implements Runnable {
           | ClassNotFoundException e) {
       }
     }
+  }
+}
+
+
+class SolitaireCipher_encode_random implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(13, 4);
+    Deck.gen.setSeed(20210303);
+    deck.shuffle();
+    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
+    String result = solitaireCipher.encode(
+        "XM;iny[r=@Hk4C!j9~GHk:S2)9H\"7z/\nQ;g+CZ3hFv1*Uvrj\"FH%> tK\"DP.Rz	K.1t'[?'s?j_,ZV,``0L4'7[[9c}uiL49=A|_/oTzu;|*w9@tELWFtA3s%/y\\W\"snI,W!ULYv9.6}?ReY\\~/n x6jA/5XdsEgK\"awJ");
+    String expected =
+        "CQSTJWQJVYPJXSWCYGKKMAZIIBZOLEZOFDORBRXYEPMMBGOSKBABZWOLISYRPTSWJYIPNBQUPKPCYLBOGBHXNQ";
+
+    if (!result.equals(expected)) {
+      throw new AssertionError(
+          "The resulting encoded message is " + result + " but should have been " + expected);
+    }
+    System.out.println("SolitaireCipher random string encoding test passed.");
+  }
+}
+
+class SolitaireCipher_decode_random implements Runnable {
+  @Override
+  public void run() {
+    Deck deck = new Deck(13, 4);
+    Deck.gen.setSeed(20210303);
+    deck.shuffle();
+    SolitaireCipher solitaireCipher = new SolitaireCipher(deck);
+    String result = solitaireCipher.decode("CQSTJWQJVYPJXSWCYGKKMAZIIBZOLEZOFDORBRXYEPMMBGOSKBABZWOLISYRPTSWJYIPNBQUPKPCYLBOGBHXNQ");
+    String expected = "XMINYRHKCJGHKSHZQGCZHFVUVRJFHTKDPRZKTSJZVLCUILAOTZUWTELWFTASYWSNIWULYVREYNXJAXDSEGKAWJ";
+
+    if (!result.equals(expected)) {
+      throw new AssertionError(
+          "The resulting decoded message is " + result + " but should have been " + expected);
+    }
+    System.out.println("SolitaireCipher random string decoding test passed.");
   }
 }
 
@@ -1988,7 +2023,9 @@ public class Tester {
       "assignment2.SolitaireCipher_decode2",
       "assignment2.SolitaireCipher_charShiftEncode",
       "assignment2.SolitaireCipher_charShiftDecode",
-      "assignment2.SolitaireCipher_decode_secret_message"
+      "assignment2.SolitaireCipher_encode_random",
+      "assignment2.SolitaireCipher_decode_random",
+      "assignment2.SolitaireCipher_decode_secret_message",
   };
 
   public static void main(String[] args) {
