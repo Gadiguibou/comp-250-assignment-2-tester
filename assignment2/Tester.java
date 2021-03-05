@@ -748,7 +748,7 @@ class Deck_Deck_one_card implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("One card deck test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -766,7 +766,7 @@ class Deck_Deck_all_cards implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("All cards deck test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -784,7 +784,7 @@ class Deck_Deck_too_many_cards implements Runnable {
     if (thrown == false) {
       throw new AssertionError("new Deck(14, 4) did not throw an IllegalArgumentException");
     } else {
-      System.out.println("Too many cards deck test passed.");
+      System.out.println("Test passed.");
     }
   }
 }
@@ -803,7 +803,7 @@ class Deck_Deck_too_few_cards implements Runnable {
     if (!thrown) {
       throw new AssertionError("new Deck(0, 4) did not throw an IllegalArgumentException");
     } else {
-      System.out.println("Too few cards deck test passed.");
+      System.out.println("Test passed.");
     }
   }
 }
@@ -822,7 +822,7 @@ class Deck_Deck_too_many_suits implements Runnable {
     if (thrown == false) {
       throw new AssertionError("new Deck(13, 5) did not throw an IllegalArgumentException");
     } else {
-      System.out.println("Too many suits deck test passed.");
+      System.out.println("Test passed.");
     }
   }
 }
@@ -841,7 +841,7 @@ class Deck_Deck_too_few_suits implements Runnable {
     if (!thrown) {
       throw new AssertionError("new Deck(13, 0) did not throw an IllegalArgumentException");
     } else {
-      System.out.println("Too few suits deck test passed.");
+      System.out.println("Test passed.");
     }
   }
 }
@@ -862,7 +862,7 @@ class Deck_Deck_copy implements Runnable {
 
     Tester.checkReferences(deckCopy);
 
-    System.out.println("Deck copy test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -891,7 +891,7 @@ class Deck_Deck_deep_copy implements Runnable {
     if (!expected.equals(received))
       throw new AssertionError("The copied deck was changed when the original deck was changed");
 
-    System.out.println("Deck deep copy test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -911,7 +911,7 @@ class Deck_addCard implements Runnable {
     if (!received.equals(expected))
       throw new AssertionError("Expected deck " + expected + " but received " + received);
 
-    System.out.println("Deck addCard() test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -926,7 +926,7 @@ class Deck_numOfCards implements Runnable {
       throw new AssertionError(
           "(new Deck(13, 4)).numOfCards is " + result + " but should have been " + expected);
     }
-    System.out.println("Deck numOfCards test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -946,7 +946,7 @@ class Deck_shuffle implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck shuffle test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -999,7 +999,7 @@ class Deck_locate_joker implements Runnable {
           + ". They should have been: " + expectedBlackJokerNext + " & " + expectedBlackJokerPrev);
     }
 
-    System.out.println("Deck locate joker test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1054,7 +1054,7 @@ class Deck_locate_joker_top_or_bottom_cards implements Runnable {
           + ". They should have been: " + expectedBlackJokerNext + " & " + expectedBlackJokerPrev);
     }
 
-    System.out.println("Deck locate joker test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1080,7 +1080,7 @@ class Deck_locate_joker_no_jokers implements Runnable {
           + " but expected " + expectedBlackJoker);
     }
 
-    System.out.println("Deck locate joker no jokers test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1102,7 +1102,7 @@ class Deck_move_card_no_change implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck card move no change test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1124,7 +1124,7 @@ class Deck_move_card_with_change implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck card move with change test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1145,7 +1145,7 @@ class Deck_triple_cut_regular implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck regular triple cut test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1167,7 +1167,7 @@ class Deck_triple_cut_empty_end implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck empty end triple cut test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1189,7 +1189,7 @@ class Deck_triple_cut_empty_start implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck empty start triple cut test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1212,7 +1212,7 @@ class Deck_triple_cut_both_ends_empty implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck both ends empty triple cut test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1234,7 +1234,7 @@ class Deck_count_cut_no_change_1 implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck count cut no change test 1 passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1256,7 +1256,7 @@ class Deck_count_cut_no_change_2 implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck count cut no change test 2 passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1277,7 +1277,7 @@ class Deck_count_cut_with_change implements Runnable {
 
     Tester.checkReferences(deck);
 
-    System.out.println("Deck count cut with change test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1296,7 +1296,7 @@ class Deck_look_up_card_joker implements Runnable {
     if (result != expected) {
       throw new AssertionError("lookUpCard() returned " + result + " but expected " + expected);
     }
-    System.out.println("Deck look up card joker test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1313,7 +1313,7 @@ class Deck_look_up_card_regular implements Runnable {
     if (!result.equals(expected)) {
       throw new AssertionError("lookUpCard() returned " + result + " but expected " + expected);
     }
-    System.out.println("Deck look up card joker test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1335,7 +1335,7 @@ class Deck_generate_next_keystream_value implements Runnable {
       throw new AssertionError("The resulting keystream values are " + Arrays.toString(results)
           + " but should have been " + Arrays.toString(expected));
     }
-    System.out.println("Deck keystream generation test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1354,7 +1354,7 @@ class SolitaireCipher_get_keystream implements Runnable {
       throw new AssertionError("The resulting keystream values are " + Arrays.toString(results)
           + " but should have been " + Arrays.toString(expected));
     }
-    System.out.println("SolitaireCipher keystream generation test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1373,7 +1373,7 @@ class SolitaireCipher_encode implements Runnable {
       throw new AssertionError(
           "The resulting encoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher message encoding test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1399,7 +1399,7 @@ class SolitaireCipher_encode2 implements Runnable {
       throw new AssertionError(
           "The resulting encoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher message encoding test #2 passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1418,7 +1418,7 @@ class SolitaireCipher_decode implements Runnable {
       throw new AssertionError(
           "The resulting decoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher message decoding test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1439,7 +1439,7 @@ class SolitaireCipher_decode2 implements Runnable {
       throw new AssertionError(
           "The resulting decoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher message decoding test #2 passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1465,7 +1465,7 @@ class SolitaireCipher_charShiftEncode implements Runnable {
       throw new AssertionError(
           "The resulting encoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher charShift Encode test #1 passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1486,7 +1486,7 @@ class SolitaireCipher_charShiftDecode implements Runnable {
       throw new AssertionError(
           "The resulting decoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher message decoding test #2 passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1506,8 +1506,6 @@ class SolitaireCipher_extra_methods implements Runnable {
         throw new AssertionError("Extra non-private method found: " + m);
       }
     }
-
-    System.out.println("SolitaireCipher extra methods test passed.");
   }
 
   private TMethod[] getRequiredMethods() {
@@ -1537,8 +1535,6 @@ class Deck_extra_methods implements Runnable {
         throw new AssertionError("Extra non-private method found: " + m);
       }
     }
-
-    System.out.println("Deck extra methods test passed.");
   }
 
   private TMethod[] getRequiredMethods() {
@@ -1571,8 +1567,6 @@ class SolitaireCipher_extra_fields implements Runnable {
       if (!Modifier.isPrivate(f.getModifiers()) && !TField.elementOf(f, requiredFields))
         throw new AssertionError("Extra field found: " + f);
     }
-
-    System.out.println("SolitaireCipher extra fields test passed.");
   }
 
   private TField[] getRequiredFields() {
@@ -1593,8 +1587,6 @@ class Deck_extra_fields implements Runnable {
       if (!Modifier.isPrivate(f.getModifiers()) && !TField.elementOf(f, requiredFields))
         throw new AssertionError("Extra field found: " + f);
     }
-
-    System.out.println("Deck extra fields test passed.");
   }
 
   private TField[] getRequiredFields() {
@@ -1619,8 +1611,6 @@ class SolitaireCipher_extra_constructors implements Runnable {
       if (!TConstructor.elementOf(c, requiredConstructors))
         throw new AssertionError("Extra constructor found: " + c);
     }
-
-    System.out.println("SolitaireCipher extra constructors test passed.");
   }
 
   public TConstructor[] getRequiredConstructors() {
@@ -1646,8 +1636,6 @@ class Deck_extra_constructors implements Runnable {
       if (!TConstructor.elementOf(c, requiredConstructors))
         throw new AssertionError("Extra constructor found: " + c);
     }
-
-    System.out.println("Deck extra constructors test passed.");
   }
 
   public TConstructor[] getRequiredConstructors() {
@@ -1675,8 +1663,6 @@ class SolitaireCipher_extra_classes implements Runnable {
       if (!Arrays.asList(requiredClasses).contains(c))
         throw new AssertionError("Extra nested class found: " + c);
     }
-
-    System.out.println("SolitaireCipher extra classes test passed.");
   }
 
   public Class[] getRequiredClasses() {
@@ -1696,8 +1682,6 @@ class Deck_extra_classes implements Runnable {
       if (!Arrays.asList(requiredClasses).contains(c))
         throw new AssertionError("Extra nested class found: " + c);
     }
-
-    System.out.println("Deck extra classes test passed.");
   }
 
   public Class[] getRequiredClasses() {
@@ -1710,12 +1694,17 @@ class Deck_extra_classes implements Runnable {
 }
 
 
-class General_helper_code implements Runnable {
-  private static String[] tests = { "assignment2.Deck_extra_methods",
-      "assignment2.Deck_extra_fields", "assignment2.Deck_extra_constructors",
-      "assignment2.Deck_extra_classes", "assignment2.SolitaireCipher_extra_methods",
-      "assignment2.SolitaireCipher_extra_fields", "assignment2.SolitaireCipher_extra_constructors",
-      "assignment2.SolitaireCipher_extra_classes" };
+class General_extra_code implements Runnable {
+  private static String[] tests = {
+      "assignment2.Deck_extra_methods",
+      "assignment2.Deck_extra_fields",
+      "assignment2.Deck_extra_constructors",
+      "assignment2.Deck_extra_classes",
+      "assignment2.SolitaireCipher_extra_methods",
+      "assignment2.SolitaireCipher_extra_fields",
+      "assignment2.SolitaireCipher_extra_constructors",
+      "assignment2.SolitaireCipher_extra_classes"
+  };
 
   @Override
   public void run() {
@@ -1728,6 +1717,8 @@ class General_helper_code implements Runnable {
           | ClassNotFoundException e) {
       }
     }
+
+    System.out.println("Test passed.");
   }
 }
 
@@ -1747,7 +1738,7 @@ class SolitaireCipher_encode_random implements Runnable {
       throw new AssertionError(
           "The resulting encoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher random string encoding test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1767,7 +1758,7 @@ class SolitaireCipher_decode_random implements Runnable {
       throw new AssertionError(
           "The resulting decoded message is " + result + " but should have been " + expected);
     }
-    System.out.println("SolitaireCipher random string decoding test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1817,7 +1808,7 @@ class default_deck_more_than_one_card implements Runnable {
       throw new AssertionError("got returned " + result
           + " but expected " + expected + "No Cards: " + numCards);
     }
-    System.out.println("default_deck_more_than_one_card test passed.");
+    System.out.println("Test passed.");
   }
 }
 ////////////////////////////////////
@@ -1861,7 +1852,7 @@ class deep_copy_deck implements Runnable {
           + " new Deck" + resultNewdDeck + "No Cards in old and new deck"
           + oldDeck.numOfCards + " " + newDeck.numOfCards);
     }
-    System.out.println("Deep copy test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1897,7 +1888,7 @@ class addOneCardToBottom implements Runnable {
       throw new AssertionError("got " + result
           + " but expected " + expected + "No Cards: " + numCards);
     }
-    System.out.println("addOneCardToBottom test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1938,7 +1929,7 @@ class shuffleDeck implements Runnable {
     if ((beforeShuffle.equals(afterShuffle))) {
       throw new AssertionError("the deck was not shuffled ");
     }
-    System.out.println("Shuffle test passed.");
+    System.out.println("Test passed.");
     System.gc();
   }
 }
@@ -1956,7 +1947,7 @@ class locatejoker implements Runnable {
     if (!returnedJoker.equals("BJ")) {
       throw new AssertionError("Wrong card returned");
     }
-    System.out.println("locatejoker test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -1981,7 +1972,7 @@ class noJokersInDeck implements Runnable {
     if (d1.locateJoker("red") != null || d1.locateJoker("black") != null) {
       throw new AssertionError("this deck shouldn't have jokers");
     }
-    System.out.println("noJokersInDeck test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2024,7 +2015,7 @@ class moveCardHead implements Runnable {
       throw new AssertionError("got " + result
           + " but expected " + expected);
     }
-    System.out.println("moveCardHead test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2062,7 +2053,7 @@ class moveCardTailby1 implements Runnable {
       throw new AssertionError("got " + result
           + " but expected " + expected);
     }
-    System.out.println("moveCardTailby1 test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2100,7 +2091,7 @@ class moveCardTailby2 implements Runnable {
       throw new AssertionError("got " + result
           + " but expected " + expected);
     }
-    System.out.println("moveCardTailby2 test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2165,7 +2156,7 @@ class tripleCut implements Runnable {
       throw new AssertionError("got " + result
           + " but expected " + expected);
     }
-    System.out.println("tripleCut test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2225,7 +2216,7 @@ class tripleCutFirstCardHead implements Runnable {
       throw new AssertionError("got " + result
           + " but expected " + expected);
     }
-    System.out.println("tripleCutFirstCardHead test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2281,7 +2272,7 @@ class tripleCutsecondcardbottom implements Runnable {
       throw new AssertionError("got " + result
           + " but expected " + expected);
     }
-    System.out.println("tripleCutsecondcardbottom test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2371,7 +2362,7 @@ class countCut implements Runnable {
       throw new AssertionError("got " + result
           + " but expected " + expected);
     }
-    System.out.println("countCut test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2433,7 +2424,7 @@ class lookUpCard implements Runnable {
       throw new AssertionError("got " + cardReturned.toString()
           + " but expected " + expected);
     }
-    System.out.println("lookUpCard test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2489,7 +2480,7 @@ class generateNextKeystreamValue implements Runnable {
       throw new AssertionError("got " + valueReturned
           + " but expected 11 ");
     }
-    System.out.println("generateNextKeystreamValue test passed.");
+    System.out.println("Test passed.");
   }
 }
 
@@ -2673,7 +2664,7 @@ class TConstructor {
 
 public class Tester {
   static String[] tests = {
-      "assignment2.General_helper_code",
+      "assignment2.General_extra_code",
       "assignment2.AddCard_AllRef",
       "assignment2.AddCard_CheckHead",
       "assignment2.AddCard_Circular",
