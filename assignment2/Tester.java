@@ -1375,8 +1375,6 @@ class noJokersInDeck implements Runnable {
       d1.addCard(newCard);
     }
 
-    Deck.Card getJoker = d1.locateJoker("black");
-
     if (d1.locateJoker("red") != null || d1.locateJoker("black") != null) {
       throw new AssertionError("this deck shouldn't have jokers");
     }
@@ -1944,7 +1942,6 @@ class lookUpCard implements Runnable {
       }
     }
 
-    Deck.Card current = d1.head;
     d1.countCut();
 
     Deck.Card cardReturned = d1.lookUpCard();
