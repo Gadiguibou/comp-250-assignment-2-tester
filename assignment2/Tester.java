@@ -326,7 +326,6 @@ class LocateJoker_Test3 implements Runnable {
     tdeck.addCard(c3);
     tdeck.addCard(c4);
 
-
     Deck.Card received = tdeck.locateJoker("red");
     if (expected != received) {
       throw new AssertionError("The reference returned was incorrect." +
@@ -419,7 +418,6 @@ class LookUpCard_Test3 implements Runnable {
     tdeck.addCard(c7);
     tdeck.addCard(c8);
     tdeck.addCard(c9);
-
 
     Deck.Card received = tdeck.lookUpCard();
     if (received != null) {
@@ -1465,6 +1463,32 @@ class Deck_move_card_with_change implements Runnable {
     }
 
     Tester.checkReferences(deck);
+
+    System.out.println("Test passed.");
+  }
+}
+
+
+/*
+ * Implements question @1209 on Piazza. If p is greater than the number of
+ * cards, the card itself should not be counted.
+ */
+class Deck_move_card_loop_around implements Runnable {
+  @Override
+  public void run() {
+    Deck d = new Deck();
+    d.addCard(d.new PlayingCard("clubs", 1));
+    d.addCard(d.new PlayingCard("clubs", 2));
+    d.addCard(d.new PlayingCard("clubs", 3));
+    d.addCard(d.new PlayingCard("clubs", 4));
+    d.moveCard(d.head.next, 5);
+    String result = Tester.deckToString(d);
+    String expected = "AC 3C 4C 2C";
+
+    if (!result.equals(expected))
+      throw new AssertionError("Received " + result + " but expected " + expected);
+
+    Tester.checkReferences(d);
 
     System.out.println("Test passed.");
   }
@@ -2838,6 +2862,7 @@ public class Tester {
       "assignment2.Deck_locate_joker_no_jokers",
       "assignment2.Deck_move_card_no_change",
       "assignment2.Deck_move_card_with_change",
+      "assignment2.Deck_move_card_loop_around",
       "assignment2.Deck_triple_cut_regular",
       "assignment2.Deck_triple_cut_empty_end",
       "assignment2.Deck_triple_cut_empty_start",
