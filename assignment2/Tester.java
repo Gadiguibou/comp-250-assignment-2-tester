@@ -101,8 +101,7 @@ class AddCard_SingleCard implements Runnable {
     Deck.Card c1 = deck.new PlayingCard(Deck.suitsInOrder[0], 1); // AC
     deck.addCard(c1);
     if (!(c1.prev == c1 && c1.next == c1)) {
-      throw new AssertionError(
-          "Card references are not correctly set up when the deck contains only ONE card.");
+      throw new AssertionError("Card references are not correctly set up when the deck contains only ONE card.");
     }
     System.out.println("Test passed.");
   }
@@ -177,8 +176,7 @@ class DeepCopy_CircularNext implements Runnable {
       if (cur instanceof Deck.PlayingCard) { // both are PlayingCard
         if (cards[i].getValue() != cur.getValue()) {
           throw new AssertionError("The card at the next position of ."
-              + i + " from head must have value: " + cards[i].getValue() + " but got: "
-              + cur.getValue());
+              + i + " from head must have value: " + cards[i].getValue() + " but got: " + cur.getValue());
         }
       } else { // both are Joker
         String cardColor = ((Deck.Joker) cards[i]).getColor();
@@ -237,8 +235,7 @@ class DeepCopy_CircularPrev implements Runnable {
       if (cur instanceof Deck.PlayingCard) { // both are PlayingCard
         if (cards[i].getValue() != cur.getValue()) {
           throw new AssertionError("The card at the prev position of ."
-              + j + " from head must have value: " + cards[i].getValue() + " but got: "
-              + cur.getValue());
+              + j + " from head must have value: " + cards[i].getValue() + " but got: " + cur.getValue());
         }
       } else { // both are Joker
         String cardColor = ((Deck.Joker) cards[i]).getColor();
@@ -263,15 +260,21 @@ class DeepCopy_CircularPrev implements Runnable {
 class LocateJoker_Test1 implements Runnable {
   @Override
   public void run() {
-    Deck tdeck = new Deck(13, 1);
-    Deck.Card expected = tdeck.head;
-    for (int i = 0; i < 13; ++i)
-      expected = expected.next;
+    Deck tdeck = new Deck();
+    Deck.Card c1 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 1); // AC
+    Deck.Card c2 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 2); // 2C
+    Deck.Card c3 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 3); // 3C
+    Deck.Card expected = tdeck.new Joker("red");
+
+    tdeck.addCard(c1);
+    tdeck.addCard(c2);
+    tdeck.addCard(c3);
+    tdeck.addCard(expected);
+
     Deck.Card received = tdeck.locateJoker("red");
     if (expected != received) {
-      throw new AssertionError("The reference returned was incorrect. The second card should have " +
-          "been returned. Expected the card " + expected.toString() + " with reference "
-          + expected.hashCode()
+      throw new AssertionError("The reference returned was incorrect." +
+          "Expected the card " + expected.toString() + " with reference " + expected.hashCode()
           + " but instead got the card " + received + " with reference " + received.hashCode());
     }
     System.out.println("Test passed.");
@@ -282,15 +285,24 @@ class LocateJoker_Test1 implements Runnable {
 class LocateJoker_Test2 implements Runnable {
   @Override
   public void run() {
-    Deck tdeck = new Deck(13, 1);
-    Deck.Card expected = tdeck.head;
-    for (int i = 0; i < 14; ++i)
-      expected = expected.next;
+    Deck tdeck = new Deck();
+    Deck.Card c1 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 1); // AC
+    Deck.Card c2 = tdeck.new Joker("red");
+    Deck.Card c3 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 2); // 2C
+    Deck.Card c4 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 3); // 3C
+
+    Deck.Card expected = tdeck.new Joker("black");
+
+    tdeck.addCard(c1);
+    tdeck.addCard(c2);
+    tdeck.addCard(c3);
+    tdeck.addCard(c4);
+    tdeck.addCard(expected);
+
     Deck.Card received = tdeck.locateJoker("black");
     if (expected != received) {
-      throw new AssertionError("The reference returned was incorrect. The second card should have " +
-          "been returned. Expected the card " + expected.toString() + " with reference "
-          + expected.hashCode()
+      throw new AssertionError("The reference returned was incorrect." +
+          "Expected the card " + expected.toString() + " with reference " + expected.hashCode()
           + " but instead got the card " + received + " with reference " + received.hashCode());
     }
     System.out.println("Test passed.");
@@ -301,15 +313,24 @@ class LocateJoker_Test2 implements Runnable {
 class LocateJoker_Test3 implements Runnable {
   @Override
   public void run() {
-    Deck tdeck = new Deck(13, 4);
-    Deck.Card expected = tdeck.head;
-    for (int i = 0; i < 53; ++i)
-      expected = expected.next;
-    Deck.Card received = tdeck.locateJoker("black");
+    Deck tdeck = new Deck();
+    Deck.Card c1 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 1); // AC
+    Deck.Card expected = tdeck.new Joker("red");
+    Deck.Card c2 = tdeck.new Joker("black");
+    Deck.Card c3 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 2); // 2C
+    Deck.Card c4 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 3); // 3C
+
+    tdeck.addCard(c1);
+    tdeck.addCard(expected);
+    tdeck.addCard(c2);
+    tdeck.addCard(c3);
+    tdeck.addCard(c4);
+
+
+    Deck.Card received = tdeck.locateJoker("red");
     if (expected != received) {
-      throw new AssertionError("The reference returned was incorrect. The second card should have " +
-          "been returned. Expected the card " + expected.toString() + " with reference "
-          + expected.hashCode()
+      throw new AssertionError("The reference returned was incorrect." +
+          "Expected the card " + expected.toString() + " with reference " + expected.hashCode()
           + " but instead got the card " + received + " with reference " + received.hashCode());
     }
     System.out.println("Test passed.");
@@ -320,13 +341,19 @@ class LocateJoker_Test3 implements Runnable {
 class LookUpCard_Test1 implements Runnable {
   @Override
   public void run() {
-    Deck tdeck = new Deck(13, 1);
-    Deck.Card expected = tdeck.head.next;
+    Deck tdeck = new Deck();
+    Deck.Card c1 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 1); // AC
+    Deck.Card expected = tdeck.new PlayingCard(Deck.suitsInOrder[0], 2); // 2C
+    Deck.Card c3 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 3); // 3C
+
+    tdeck.addCard(c1);
+    tdeck.addCard(expected);
+    tdeck.addCard(c3);
+
     Deck.Card received = tdeck.lookUpCard();
     if (expected != received) {
       throw new AssertionError("The reference returned was incorrect. The second card should have " +
-          "been returned. Expected the card " + expected.toString() + " with reference "
-          + expected.hashCode()
+          "been returned. Expected the card " + expected.toString() + " with reference " + expected.hashCode()
           + " but instead got the card " + received + " with reference " + received.hashCode());
     }
     System.out.println("Test passed.");
@@ -337,17 +364,26 @@ class LookUpCard_Test1 implements Runnable {
 class LookUpCard_Test2 implements Runnable {
   @Override
   public void run() {
-    Deck tdeck = new Deck(11, 4);
-    Deck.Card old_head = tdeck.head;
-    tdeck.head = tdeck.new PlayingCard(Deck.suitsInOrder[3], 2);
-    tdeck.head.next = old_head.next;
-    tdeck.head.prev = old_head.prev;
+    Deck tdeck = new Deck();
+    Deck.Card c1 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 6); // 6C
+    Deck.Card c2 = tdeck.new PlayingCard(Deck.suitsInOrder[1], 2); // 2D
+    Deck.Card c3 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 3); // 3H
+    Deck.Card c4 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 4); // 4H
+    Deck.Card c5 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 5); // 5H
+    Deck.Card c6 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 6); // 6H
+    Deck.Card expected = tdeck.new PlayingCard(Deck.suitsInOrder[2], 7); // 7H
+    Deck.Card c7 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 8); // 8H
+    Deck.Card c8 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 9); // 9H
 
-    Deck.Card expected = tdeck.head;
-
-    for (int i = 0; i < 41; ++i) {
-      expected = expected.next;
-    }
+    tdeck.addCard(c1);
+    tdeck.addCard(c2);
+    tdeck.addCard(c3);
+    tdeck.addCard(c4);
+    tdeck.addCard(c5);
+    tdeck.addCard(c6);
+    tdeck.addCard(expected);
+    tdeck.addCard(c7);
+    tdeck.addCard(c8);
 
     Deck.Card received = tdeck.lookUpCard();
     if (expected != received) {
@@ -363,11 +399,27 @@ class LookUpCard_Test2 implements Runnable {
 class LookUpCard_Test3 implements Runnable {
   @Override
   public void run() {
-    Deck tdeck = new Deck(8, 4);
-    Deck.Card old_head = tdeck.head;
-    tdeck.head = tdeck.new PlayingCard(Deck.suitsInOrder[2], 7);
-    tdeck.head.next = old_head.next;
-    tdeck.head.prev = old_head.prev;
+    Deck tdeck = new Deck();
+    Deck.Card c1 = tdeck.new PlayingCard(Deck.suitsInOrder[0], 8); // 6C
+    Deck.Card c2 = tdeck.new PlayingCard(Deck.suitsInOrder[1], 2); // 2D
+    Deck.Card c3 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 3); // 3H
+    Deck.Card c4 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 4); // 4H
+    Deck.Card c5 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 5); // 5H
+    Deck.Card c6 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 6); // 6H
+    Deck.Card c7 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 7); // 7H
+    Deck.Card c8 = tdeck.new PlayingCard(Deck.suitsInOrder[2], 8); // 8H
+    Deck.Card c9 = tdeck.new Joker("red"); // JR
+
+    tdeck.addCard(c1);
+    tdeck.addCard(c2);
+    tdeck.addCard(c3);
+    tdeck.addCard(c4);
+    tdeck.addCard(c5);
+    tdeck.addCard(c6);
+    tdeck.addCard(c7);
+    tdeck.addCard(c8);
+    tdeck.addCard(c9);
+
 
     Deck.Card received = tdeck.lookUpCard();
     if (received != null) {
@@ -570,15 +622,31 @@ class Shuffle_Example implements Runnable {
 
     // expected result
     // 3C 3D AD 5C BJ 2C 2D 4D AC RJ 4C 5D
+
     int[] shuffledIndex = { 2, 7, 5, 4, 11, 1, 6, 8, 0, 10, 3, 9 };
+
+    // .next references
     Deck.Card cur = deck.head;
     for (int i = 0; i < 12; i++) {
       Deck.Card expected = arrDeck[shuffledIndex[i]];
       if (cur.getValue() != expected.getValue()) {
         throw new AssertionError("Deck is not correctly shuffled.\n" +
-            "Expected card at index " + i + " is " + expected + " but got " + cur);
+            "Forward references are not correctly set up. " +
+            "Expected card at index " + i + " iterating using .next is " + expected + " but got " + cur);
       }
       cur = cur.next;
+    }
+
+    // .prev references
+    cur = deck.head.prev;
+    for (int i = 11; i >= 0; i--) {
+      Deck.Card expected = arrDeck[shuffledIndex[i]];
+      if (cur.getValue() != expected.getValue()) {
+        throw new AssertionError("Deck is not correctly shuffled.\n" +
+            "Backward references are not correctly set up. " +
+            "Expected card at index " + i + " iterating using .prev is " + expected + " but got " + cur);
+      }
+      cur = cur.prev;
     }
     System.out.println("Test passed.");
   }
@@ -617,14 +685,29 @@ class Shuffle_FullDeck implements Runnable {
         45, 24, 32, 36, 38, 25, 7, 3, 47, 23, 12, 8, 4, 11, 40, 43, 35, 22,
         42, 17, 31, 16, 21, 20, 28, 18, 29, 6, 52, 34, 2, 14, 10, 5, 33, 49, 30,
         26, 53, 41, 44, 15, 50, 39, 19, 1, 13, 51, 48, 46, 9, 37, 0, 27 };
+
+    // .next references
     Deck.Card cur = deck.head;
     for (int i = 0; i < 54; i++) {
       Deck.Card expected = arrDeck[shuffledIndex[i]];
       if (cur.getValue() != expected.getValue()) {
         throw new AssertionError("Deck is not correctly shuffled.\n" +
+            "Forward references are not correctly set up. " +
             "Expected card at index " + i + " is " + expected + " but got " + cur);
       }
       cur = cur.next;
+    }
+
+    // .prev references
+    cur = deck.head.prev;
+    for (int i = 53; i >= 0; i--) {
+      Deck.Card expected = arrDeck[shuffledIndex[i]];
+      if (cur.getValue() != expected.getValue()) {
+        throw new AssertionError("Deck is not correctly shuffled.\n" +
+            "Backward references are not correctly set up. " +
+            "Expected card at index " + i + " iterating using .prev is " + expected + " but got " + cur);
+      }
+      cur = cur.prev;
     }
     System.out.println("Test passed.");
   }
@@ -657,6 +740,7 @@ class Shuffle_NewCard implements Runnable {
     deck.shuffle();
 
     Deck.Card cur = deck.head;
+    // forward ref
     for (int i = 0; i < 12; i++) {
       if (!cardSet.contains(cur)) {
         throw new AssertionError("Shuffle should not create new cards.");
@@ -667,6 +751,16 @@ class Shuffle_NewCard implements Runnable {
       throw new AssertionError("Deck is not correctly shuffled. " +
           "Tail does not connect to head or new cards were added.");
     }
+
+    // backward ref
+    for (int i = 11; i >= 0; i--) {
+      cur = cur.prev;
+    }
+    if (cur != deck.head) {
+      throw new AssertionError("Deck is not correctly shuffled. " +
+          "Backward references are not correctly set up.");
+    }
+
     System.out.println("Test passed.");
   }
 }
@@ -718,14 +812,29 @@ class Shuffle_Three implements Runnable {
     // AC, 5C, 3C, 2C, 4C
 
     int[] shuffledIndex = { 0, 4, 2, 1, 3 };
+
+    // .next references
     Deck.Card cur = deck.head;
     for (int i = 0; i < 5; i++) {
       Deck.Card expected = arrDeck[shuffledIndex[i]];
       if (cur.getValue() != expected.getValue()) {
         throw new AssertionError("Deck is not correctly shuffled.\n" +
+            "Forward references are not correctly set up. " +
             "Expected card at index " + i + " is " + expected + " but got " + cur);
       }
       cur = cur.next;
+    }
+
+    // .prev references
+    cur = deck.head.prev;
+    for (int i = 4; i >= 0; i--) {
+      Deck.Card expected = arrDeck[shuffledIndex[i]];
+      if (cur.getValue() != expected.getValue()) {
+        throw new AssertionError("Deck is not correctly shuffled.\n" +
+            "Backward references are not correctly set up. " +
+            "Expected card at index " + i + " iterating using .prev is " + expected + " but got " + cur);
+      }
+      cur = cur.prev;
     }
     System.out.println("Test passed.");
   }
