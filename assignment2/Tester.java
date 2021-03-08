@@ -771,6 +771,31 @@ class Deck_Deck_all_cards implements Runnable {
 }
 
 
+/*
+ * Checks that the Deck constructor can create the correct order when the order
+ * of Deck.suitsInOrder is changed
+ */
+class Deck_Deck_suitsInOrder_changed implements Runnable {
+  @Override
+  public void run() {
+    Deck.suitsInOrder = new String[] { "spades", "hearts", "diamonds", "clubs" };
+    Deck deck = new Deck(4, 3);
+    String result = Tester.deckToString(deck);
+    String expected = "AS 2S 3S 4S AH 2H 3H 4H AD 2D 3D 4D RJ BJ";
+    Deck.suitsInOrder = new String[] { "clubs", "diamonds", "hearts", "spades" };
+
+    if (!result.equals(expected)) {
+      throw new AssertionError("Using Deck.suitsInOrder = {S, H, D, C}, new Deck(4, 3) returned "
+          + result + " but expected " + expected);
+    }
+
+    Tester.checkReferences(deck);
+
+    System.out.println("Test passed.");
+  }
+}
+
+
 class default_deck_more_than_one_card implements Runnable {
   @Override
   public void run() {
@@ -2688,6 +2713,7 @@ public class Tester {
       "assignment2.Shuffle_Three",
       "assignment2.Deck_Deck_one_card",
       "assignment2.Deck_Deck_all_cards",
+      "assignment2.Deck_Deck_suitsInOrder_changed",
       "assignment2.Deck_Deck_too_many_cards",
       "assignment2.Deck_Deck_too_few_cards",
       "assignment2.Deck_Deck_too_many_suits",
