@@ -858,6 +858,33 @@ class Deck_Deck_too_many_suits implements Runnable {
 }
 
 
+/*
+ * Checks that the Deck constructor checks numOfSuits against the length
+ * suitsInOrder and not just the constant 4
+ */
+class Deck_Deck_too_many_suits2 implements Runnable {
+  @Override
+  public void run() {
+    Deck.suitsInOrder = new String[] { "clubs" };
+    boolean thrown = false;
+    try {
+      new Deck(13, 2);
+    } catch (IllegalArgumentException expected) {
+      thrown = true;
+    } finally {
+      Deck.suitsInOrder = new String[] { "clubs", "diamonds", "hearts", "spades" };
+    }
+
+    if (!thrown) {
+      throw new AssertionError(
+          "new Deck(13, 2) did not throw an IllegalArgumentException when Deck.suitsInOrder was changed");
+    } else {
+      System.out.println("Test passed.");
+    }
+  }
+}
+
+
 class Deck_Deck_too_few_suits implements Runnable {
   @Override
   public void run() {
@@ -2664,6 +2691,7 @@ public class Tester {
       "assignment2.Deck_Deck_too_many_cards",
       "assignment2.Deck_Deck_too_few_cards",
       "assignment2.Deck_Deck_too_many_suits",
+      "assignment2.Deck_Deck_too_many_suits2",
       "assignment2.Deck_Deck_too_few_suits",
       "assignment2.Deck_Deck_copy",
       "assignment2.Deck_Deck_deep_copy",
