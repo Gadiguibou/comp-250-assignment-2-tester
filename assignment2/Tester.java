@@ -2764,7 +2764,8 @@ public class Tester {
     if (numPassed == tests.length) {
       System.out.println("All clear!\n\nDon't forget to check the time complexity of your methods."
           + "\nSasha\'s RuntimeTester is a great tool for this:"
-          + "\nhttps://www.youtube.com/watch?v=UNCopqdTX00");
+          + "\nhttps://www.youtube.com/watch?v=UNCopqdTX00"
+          + "\n\nYou can find some basic tests (using the RuntimeTester) in TimeTester.java");
     }
   }
 
