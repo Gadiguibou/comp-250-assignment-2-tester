@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import assignment2.Deck.Joker;
-import assignment2.Deck.PlayingCard;
 
 // Official tests
 // ==========================================================================================
