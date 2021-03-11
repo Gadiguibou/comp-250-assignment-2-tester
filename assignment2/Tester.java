@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import assignment2.Deck.Joker;
+import assignment2.Deck.PlayingCard;
 
 // Official tests
 // ==========================================================================================
@@ -1341,6 +1343,29 @@ class Deck_locate_joker_no_jokers implements Runnable {
     }
 
     System.out.println("Test passed.");
+  }
+}
+
+
+class Deck_locate_joker_wrong_color implements Runnable {
+
+  @Override
+  public void run() {
+    Deck deck = new Deck(10, 2);
+    Joker result;
+    try {
+      result = deck.locateJoker("green");
+    } catch (Throwable t) {
+      throw new AssertionError(
+          "deck.locateJoker(\"green\") threw an exception, but should return null");
+    }
+
+    if (result != null) {
+      throw new AssertionError(
+          "deck.locateJoker(\"green\") returned " + result + ", but expected null");
+    }
+
+
   }
 }
 
@@ -2695,6 +2720,7 @@ public class Tester {
       "assignment2.Deck_locate_joker",
       "assignment2.Deck_locate_joker_top_or_bottom_cards",
       "assignment2.Deck_locate_joker_no_jokers",
+      "assignment2.Deck_locate_joker_wrong_color",
       "assignment2.Deck_move_card_no_change",
       "assignment2.Deck_move_card_with_change",
       "assignment2.Deck_move_card_loop_around",
