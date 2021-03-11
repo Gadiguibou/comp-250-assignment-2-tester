@@ -6,9 +6,10 @@ import RuntimeTester.benchmark;
 
 public class TimeTester {
   private static Random rand = new Random();
-  private static Deck deck1 = new Deck(10, 2);
 
   public static void main(String[] args) {
+    // Don't forget to download Sasha's RuntimeTester library:
+    // https://www.youtube.com/watch?v=UNCopqdTX00
     Visualizer.launch(TimeTester.class);
   }
 
