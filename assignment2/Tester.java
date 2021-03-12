@@ -2825,20 +2825,25 @@ public class Tester {
   }
 
   /**
-   * Converts the given deck to a String, with one space between each card.
+   * Converts the given deck to a String, with one space between each card. If
+   * numOfCards is 0 or deck.head is null, "-" is returned.
    * 
    * @param deck The deck to be converted to String
    * @return A string listing all cards, separated by spaces
    */
   public static String deckToString(Deck deck) {
-    String out = "";
-    Deck.Card currentCard = deck.head;
-
-    for (int i = 0; i < deck.numOfCards; i++) {
-      out += currentCard.toString() + " ";
-      currentCard = currentCard.next;
+    // Empty deck
+    if (deck.numOfCards == 0 || deck.head == null)
+      return "-";
+    // Non-empty deck
+    else {
+      String out = "";
+      Deck.Card currentCard = deck.head;
+      for (int i = 0; i < deck.numOfCards; i++) {
+        out += currentCard.toString() + " ";
+        currentCard = currentCard.next;
+      }
+      return out.substring(0, out.length() - 1);
     }
-
-    return out.substring(0, out.length() - 1);
   }
 }
