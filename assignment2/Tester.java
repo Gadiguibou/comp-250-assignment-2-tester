@@ -1364,7 +1364,7 @@ class Deck_locate_joker_wrong_color implements Runnable {
           "deck.locateJoker(\"green\") returned " + result + ", but expected null");
     }
 
-
+    System.out.println("Test passed.");
   }
 }
 
